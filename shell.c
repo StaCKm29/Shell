@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
@@ -12,67 +11,61 @@ void sig_handler(int signo)
         printf("Recibí SIGINT\n");
 }*/
 
-void extraerComandos(char *input, char ***comandos, int *tamaño_buf){
-    int i = 0;
+void extraerComandos(char *input, char **comandos){
     char *token = strtok(input, " ");
-
-    *comandos = malloc((*tamaño_buf) * sizeof(char *));
-    if (!comandos){
-        printf("Error en memoria");
-        exit(1);
-    }
-
-    while (token != NULL)
-    {
-        (*comandos)[i] = token;
-        i++;
-
-        if (i >= *tamaño_buf)
-        {
-            *tamaño_buf += 64;
-            *comandos = realloc(*comandos, (*tamaño_buf) * sizeof(char *));
-            if (!*comandos)
-            {
-                printf("Error en redimensionar memoria");
-                exit(1);
-            }
-        }
+    int i = 0;
+    while(token != NULL){
+        comandos[i] = token;
         token = strtok(NULL, " ");
+        i++;
     }
-    (*comandos)[i] = NULL;
+    comandos[i] = NULL;
 }
 
-int main()
-{
-    char input[1024]; // Buffer para almacenar la entrada del usuario
-    char **comandos = NULL;
-    int tamaño_buf = 64;
+void imprimirArreglo(char **arreglo) {
+    int i = 0;
+    while (arreglo[i] != NULL) {
+        printf("%s ,", arreglo[i]);
+        i++;
+    }
+}
 
-    while (1){
-        printf("\033[1;37mOhMyShell 👾: \033[0m");              // Imprimir un prompt
-        fgets(input, sizeof(input), stdin); // Leer la entrada del usuario
 
+int main() {
+    char input[1024];  // Buffer para almacenar la entrada del usuario.
+    char *comandos[1024]; // Buffer para almacenar los comandos.
+
+
+    while (1) {
+        printf("\033[1;37mOhMyShell 👾 \033[0m");  // Imprimir un prompt
+        fgets(input, sizeof(input), stdin);  // Leer la entrada del usuario
         // Eliminar el salto de línea final que fgets incluye
         input[strcspn(input, "\n")] = 0;
 
         // Si el usuario ingresa "exit", salir del programa
-        if (strcmp(input, "exit") == 0)
-        {
+        if (strcmp(input, "exit") == 0) {
             break;
         }
 
-        if (strlen(input) == 0){
+        // Si el usuario presiona enter sin ingresar nada, continuar
+        if (strlen(input) == 0) {
             continue;
         }
 
-        extraerComandos(input, &comandos, &tamaño_buf);
-        // Si el primer comando es "cd", cambiar el directorio
-        if (strcmp(comandos[0], "cd") == 0) {
+        extraerComandos(input, comandos);
+
+        //El padre debe ejecutar el comando cd.
+        if(strcmp(comandos[0], "cd") == 0){
             // Si no hay argumento para cd, cambiar al directorio home
-            if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0)
+            if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0) {
                 chdir(getenv("HOME"));
-        } else {
-            if(fork() == 0) {
+            } else {
+                if (chdir(comandos[1]) != 0) {
+                    perror("Error cambiando el directorio");
+                }
+            }
+        }else {
+            if (fork() == 0) { // Proceso hijo
                 execvp(comandos[0], comandos);
                 perror("Error ejecutando el comando");
                 exit(1);
@@ -80,9 +73,6 @@ int main()
                 wait(NULL);
             }
         }
-        free(comandos);
-        comandos = NULL;
-
     }
 
     return 0;
