@@ -1,4 +1,4 @@
-
+```
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
@@ -12,12 +12,14 @@ void sig_handler(int signo)
         printf("Recibí SIGINT\n");
 }*/
 
-void extraerComandos(char *input, char ***comandos, int *tamaño_buf){
+void extraerComandos(char *input, char ***comandos, int *tamaño_buf)
+{
     int i = 0;
     char *token = strtok(input, " ");
 
     *comandos = malloc((*tamaño_buf) * sizeof(char *));
-    if (!comandos){
+    if (!comandos)
+    {
         printf("Error en memoria");
         exit(1);
     }
@@ -50,7 +52,7 @@ int main()
 
     while (1)
     {
-        printf("\033[1;37mOhMyShell 👾: \033[0m");              // Imprimir un prompt
+        printf("Usuario :space_invader: ");              // Imprimir un prompt
         fgets(input, sizeof(input), stdin); // Leer la entrada del usuario
 
         // Eliminar el salto de línea final que fgets incluye
@@ -61,7 +63,7 @@ int main()
         {
             break;
         }
-
+        
         if (strlen(input) == 0)
         {
             continue;
@@ -91,4 +93,4 @@ int main()
     }
 
     return 0;
-}
+}```
