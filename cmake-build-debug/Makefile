@@ -129,6 +129,30 @@ shell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/build
 .PHONY : shell/fast
 
+infPipes.o: infPipes.c.o
+.PHONY : infPipes.o
+
+# target to build an object file
+infPipes.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.o
+.PHONY : infPipes.c.o
+
+infPipes.i: infPipes.c.i
+.PHONY : infPipes.i
+
+# target to preprocess a source file
+infPipes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.i
+.PHONY : infPipes.c.i
+
+infPipes.s: infPipes.c.s
+.PHONY : infPipes.s
+
+# target to generate assembly for a file
+infPipes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.s
+.PHONY : infPipes.c.s
+
 main.o: main.c.o
 .PHONY : main.o
 
@@ -186,6 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... shell"
+	@echo "... infPipes.o"
+	@echo "... infPipes.i"
+	@echo "... infPipes.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

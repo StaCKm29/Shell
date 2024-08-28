@@ -23,15 +23,23 @@ void extraerComandos(char *input, char **comandos){
     comandos[i] = NULL;
 }
 
+void imprimirArreglo(char **arreglo) {
+    int i = 0;
+    while (arreglo[i] != NULL) {
+        printf("%s ,", arreglo[i]);
+        i++;
+    }
+}
+
 
 int main() {
-    char input[1024];  // Buffer para almacenar la entrada del usuario
-    char *comandos[1024];
+    char input[1024];  // Buffer para almacenar la entrada del usuario.
+    char *comandos[1024]; // Buffer para almacenar los comandos.
+
 
     while (1) {
-        printf("Usuario 👾 ");  // Imprimir un prompt
+        printf("\033[1;37mOhMyShell 👾 \033[0m");  // Imprimir un prompt
         fgets(input, sizeof(input), stdin);  // Leer la entrada del usuario
-
         // Eliminar el salto de línea final que fgets incluye
         input[strcspn(input, "\n")] = 0;
 
@@ -40,22 +48,31 @@ int main() {
             break;
         }
 
+        // Si el usuario presiona enter sin ingresar nada, continuar
         if (strlen(input) == 0) {
             continue;
         }
 
-        pid_t pid;
-        pid = fork();
-        if (pid == 0) {  // Proceso hijo
-            extraerComandos(input, comandos);
-            execvp(comandos[0], comandos);
-            perror("Error ejecutando el comando");
-            exit(1);
-        } else if (pid > 0) {  // Proceso padre
-            wait(NULL);
-        } else {  // Error en fork
-            perror("Fork falló");
-            exit(1);
+        extraerComandos(input, comandos);
+
+        //El padre debe ejecutar el comando cd.
+        if(strcmp(comandos[0], "cd") == 0){
+            // Si no hay argumento para cd, cambiar al directorio home
+            if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0) {
+                chdir(getenv("HOME"));
+            } else {
+                if (chdir(comandos[1]) != 0) {
+                    perror("Error cambiando el directorio");
+                }
+            }
+        }else {
+            if (fork() == 0) { // Proceso hijo
+                execvp(comandos[0], comandos);
+                perror("Error ejecutando el comando");
+                exit(1);
+            } else {
+                wait(NULL);
+            }
         }
     }
 
