@@ -1,0 +1,11 @@
+ls
+rm
+cd
+mkdir
+touch
+mv
+cp
+pwd
+whoami
+clear
+exit

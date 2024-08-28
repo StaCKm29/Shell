@@ -1,4 +1,9 @@
 file(REMOVE_RECURSE
+<<<<<<< HEAD
+=======
+  "CMakeFiles/shell.dir/infPipes.c.o"
+  "CMakeFiles/shell.dir/infPipes.c.o.d"
+>>>>>>> stack29
   "CMakeFiles/shell.dir/main.c.o"
   "CMakeFiles/shell.dir/main.c.o.d"
   "CMakeFiles/shell.dir/shell.c.o"

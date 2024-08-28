@@ -8,6 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+<<<<<<< HEAD
+=======
+  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/infPipes.c" "CMakeFiles/shell.dir/infPipes.c.o" "gcc" "CMakeFiles/shell.dir/infPipes.c.o.d"
+>>>>>>> stack29
   "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/main.c" "CMakeFiles/shell.dir/main.c.o" "gcc" "CMakeFiles/shell.dir/main.c.o.d"
   "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/shell.c" "CMakeFiles/shell.dir/shell.c.o" "gcc" "CMakeFiles/shell.dir/shell.c.o.d"
   )
