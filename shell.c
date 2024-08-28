@@ -48,8 +48,7 @@ int main()
     char **comandos = NULL;
     int tamaño_buf = 64;
 
-    while (1)
-    {
+    while (1){
         printf("\033[1;37mOhMyShell 👾: \033[0m");              // Imprimir un prompt
         fgets(input, sizeof(input), stdin); // Leer la entrada del usuario
 
@@ -62,32 +61,28 @@ int main()
             break;
         }
 
-        if (strlen(input) == 0)
-        {
+        if (strlen(input) == 0){
             continue;
         }
 
-        pid_t pid;
-        pid = fork();
-        if (pid == 0)
-        { // Proceso hijo
-            // extraerComandos(input, comandos, &tamaño);
-            extraerComandos(input, &comandos, &tamaño_buf);
-            execvp(comandos[0], comandos);
-            perror("Error ejecutando el comando");
-            exit(1);
-        }
-        else if (pid > 0)
-        { // Proceso padre
-            wait(NULL);
-        }
-        else
-        { // Error en fork
-            perror("Fork falló");
-            exit(1);
+        extraerComandos(input, &comandos, &tamaño_buf);
+        // Si el primer comando es "cd", cambiar el directorio
+        if (strcmp(comandos[0], "cd") == 0) {
+            // Si no hay argumento para cd, cambiar al directorio home
+            if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0)
+                chdir(getenv("HOME"));
+        } else {
+            if(fork() == 0) {
+                execvp(comandos[0], comandos);
+                perror("Error ejecutando el comando");
+                exit(1);
+            } else {
+                wait(NULL);
+            }
         }
         free(comandos);
         comandos = NULL;
+
     }
 
     return 0;
