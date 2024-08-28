@@ -11,30 +11,42 @@ void sig_handler(int signo)
         printf("Recibí SIGINT\n");
 }*/
 
-void extraerComandos(char *input, char **comandos){
+void extraerComandos(char *input, char ***comandos, int *tamaño_buf)
+{
+    int i = 0;
     char *token = strtok(input, " ");
-    int i = 0;
-    while(token != NULL){
-        comandos[i] = token;
+
+    *comandos = malloc((*tamaño_buf) * sizeof(char *));
+    if (!comandos)
+    {
+        printf("Error en memoria");
+        exit(1);
+    }
+
+    while (token != NULL)
+    {
+        (*comandos)[i] = token;
+        i++;
+
+        if (i >= *tamaño_buf)
+        {
+            *tamaño_buf += 64;
+            *comandos = realloc(*comandos, (*tamaño_buf) * sizeof(char *));
+            if (!*comandos)
+            {
+                printf("Error en redimensionar memoria");
+                exit(1);
+            }
+        }
         token = strtok(NULL, " ");
-        i++;
     }
-    comandos[i] = NULL;
+    (*comandos)[i] = NULL;
 }
-
-void imprimirArreglo(char **arreglo) {
-    int i = 0;
-    while (arreglo[i] != NULL) {
-        printf("%s ,", arreglo[i]);
-        i++;
-    }
-}
-
 
 int main() {
-    char input[1024];  // Buffer para almacenar la entrada del usuario.
-    char *comandos[1024]; // Buffer para almacenar los comandos.
-
+    char input[1024]; // Buffer para almacenar la entrada del usuario
+    char **comandos = NULL;
+    int tamaño_buf = 64;
 
     while (1) {
         printf("\033[1;37mOhMyShell 👾 \033[0m");  // Imprimir un prompt
@@ -52,7 +64,7 @@ int main() {
             continue;
         }
 
-        extraerComandos(input, comandos);
+        extraerComandos(input, &comandos, &tamaño_buf);
 
         //El padre debe ejecutar el comando cd.
         if(strcmp(comandos[0], "cd") == 0){
