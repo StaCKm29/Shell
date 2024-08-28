@@ -12,12 +12,12 @@ void sig_handler(int signo)
         printf("Recibí SIGINT\n");
 }*/
 
-void extraerComandos(char *input, char ***comandos, int *tamaño_buf)
+char **extraerComandos(char *input)
 {
-    int i = 0;
+    int i = 0, tamaño_buf = 64;
     char *token = strtok(input, " ");
 
-    *comandos = malloc((*tamaño_buf) * sizeof(char *));
+    char **comandos = malloc(tamaño_buf * sizeof(char *));
     if (!comandos)
     {
         printf("Error en memoria");
@@ -26,13 +26,13 @@ void extraerComandos(char *input, char ***comandos, int *tamaño_buf)
 
     while (token != NULL)
     {
-        (*comandos)[i] = token;
+        comandos[i] = token;
         i++;
 
-        if (i >= *tamaño_buf)
+        if (i >= tamaño_buf)
         {
-            *tamaño_buf += 64;
-            *comandos = realloc(*comandos, (*tamaño_buf) * sizeof(char *));
+            tamaño_buf += 64;
+            comandos = realloc(comandos, tamaño_buf * sizeof(char *));
             if (!*comandos)
             {
                 printf("Error en redimensionar memoria");
@@ -41,14 +41,15 @@ void extraerComandos(char *input, char ***comandos, int *tamaño_buf)
         }
         token = strtok(NULL, " ");
     }
-    (*comandos)[i] = NULL;
+    comandos[i] = NULL;
+    return comandos;
 }
 
 int main()
 {
     char input[1024]; // Buffer para almacenar la entrada del usuario
-    char **comandos = NULL;
-    int tamaño_buf = 64;
+                      // char **comandos = NULL;
+    // int tamaño_buf = 64;
 
     while (1)
     {
@@ -74,8 +75,9 @@ int main()
         if (pid == 0)
         { // Proceso hijo
             // extraerComandos(input, comandos, &tamaño);
-            extraerComandos(input, &comandos, &tamaño_buf);
+            char **comandos = extraerComandos(input);
             execvp(comandos[0], comandos);
+            free(comandos);
             perror("Error ejecutando el comando");
             exit(1);
         }
@@ -88,9 +90,6 @@ int main()
             perror("Fork falló");
             exit(1);
         }
-        free(comandos);
-        comandos = NULL;
     }
-
     return 0;
 }
