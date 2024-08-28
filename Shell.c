@@ -56,10 +56,10 @@ int main()
         fgets(input, sizeof(input), stdin); // Leer la entrada del usuario
 
         // Eliminar el salto de línea final que fgets incluye
-        input[strcspn(input, "\n")] = 0
+        input[strcspn(input, "\n")] = 0;
 
-            // Si el usuario ingresa "exit", salir del programa
-            if (strcmp(input, "exit") == 0)
+        // Si el usuario ingresa "exit", salir del programa
+        if (strcmp(input, "exit") == 0)
         {
             break;
         }
