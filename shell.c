@@ -11,6 +11,9 @@ void sig_handler(int signo)
         printf("Recibí SIGINT\n");
 }*/
 
+const int READ = 0;  // Variable de lectura para pipe
+const int WRITE = 1; // Variable de escritura para pipe
+
 void extraerComandos(char *input, char ***comandos, int *tamaño_buf)
 {
     int i = 0;
