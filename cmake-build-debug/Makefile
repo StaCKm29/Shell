@@ -129,6 +129,8 @@ shell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/build
 .PHONY : shell/fast
 
+<<<<<<< HEAD
+=======
 infPipes.o: infPipes.c.o
 .PHONY : infPipes.o
 
@@ -153,6 +155,7 @@ infPipes.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.s
 .PHONY : infPipes.c.s
 
+>>>>>>> stack29
 main.o: main.c.o
 .PHONY : main.o
 
@@ -210,9 +213,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... shell"
+<<<<<<< HEAD
+=======
 	@echo "... infPipes.o"
 	@echo "... infPipes.i"
 	@echo "... infPipes.s"
+>>>>>>> stack29
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
