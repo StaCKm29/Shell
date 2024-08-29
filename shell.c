@@ -15,10 +15,6 @@ const int WRITE = 1; // Variable de escritura para pipe
 
 char **extraerComandos(char *input) {
     int i = 0, tamaño_buf = 64;
-
-void extraerComandos(char *input, char ***comandos, int *tamaño_buf)
-{
-    int i = 0;
     char *token = strtok(input, " ");
 
     char **comandos = malloc(tamaño_buf * sizeof(char *));
@@ -47,26 +43,26 @@ void extraerComandos(char *input, char ***comandos, int *tamaño_buf)
 
 int main(){
     char input[1024]; // Buffer para almacenar la entrada del usuario
-    char **comandos = NULL;
-    int tamaño_buf = 64;
 
     while (1){
         printf("\033[1;37mOhMyShell 👾 \033[0m"); // Imprimir un prompt
         fgets(input, sizeof(input), stdin);       // Leer la entrada del usuario
         // Eliminar el salto de línea final que fgets incluye
         input[strcspn(input, "\n")] = 0;
+        char **comandos = extraerComandos(input);
+
+        for (int i = 0; comandos[i] != NULL; i++)
+            printf("%s, ", comandos[i]);
 
         // Si el usuario ingresa "exit", salir del programa
-        if (strcmp(input, "exit") == 0) {
+        if (strcmp(comandos[0], "exit") == 0) {
             break;
         }
 
         // Si el usuario presiona enter sin ingresar nada, continuar
-        if (strlen(input) == 0) {
+        if (strlen(comandos[0]) == 0) {
             continue;
         }
-
-        char **comandos = extraerComandos(input);
 
         // El padre debe ejecutar el comando cd.
         if (strcmp(comandos[0], "cd") == 0) {
