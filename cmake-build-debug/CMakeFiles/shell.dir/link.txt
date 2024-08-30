@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-/usr/bin/cc -g CMakeFiles/shell.dir/main.c.o CMakeFiles/shell.dir/shell.c.o -o shell
-=======
-/usr/bin/cc -g CMakeFiles/shell.dir/main.c.o CMakeFiles/shell.dir/shell.c.o CMakeFiles/shell.dir/infPipes.c.o -o shell
->>>>>>> stack29
+/usr/bin/cc -g CMakeFiles/shell.dir/src/main.c.o CMakeFiles/shell.dir/src/shell.c.o CMakeFiles/shell.dir/src/infPipes.c.o CMakeFiles/shell.dir/src/tokenespacios.c.o -o shell

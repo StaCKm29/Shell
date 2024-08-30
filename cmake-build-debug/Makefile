@@ -129,80 +129,101 @@ shell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/build
 .PHONY : shell/fast
 
-<<<<<<< HEAD
-=======
-infPipes.o: infPipes.c.o
-.PHONY : infPipes.o
+src/infPipes.o: src/infPipes.c.o
+.PHONY : src/infPipes.o
 
 # target to build an object file
-infPipes.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.o
-.PHONY : infPipes.c.o
+src/infPipes.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/infPipes.c.o
+.PHONY : src/infPipes.c.o
 
-infPipes.i: infPipes.c.i
-.PHONY : infPipes.i
+src/infPipes.i: src/infPipes.c.i
+.PHONY : src/infPipes.i
 
 # target to preprocess a source file
-infPipes.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.i
-.PHONY : infPipes.c.i
+src/infPipes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/infPipes.c.i
+.PHONY : src/infPipes.c.i
 
-infPipes.s: infPipes.c.s
-.PHONY : infPipes.s
+src/infPipes.s: src/infPipes.c.s
+.PHONY : src/infPipes.s
 
 # target to generate assembly for a file
-infPipes.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.s
-.PHONY : infPipes.c.s
+src/infPipes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/infPipes.c.s
+.PHONY : src/infPipes.c.s
 
->>>>>>> stack29
-main.o: main.c.o
-.PHONY : main.o
+src/main.o: src/main.c.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/main.c.o
-.PHONY : main.c.o
+src/main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/main.c.o
+.PHONY : src/main.c.o
 
-main.i: main.c.i
-.PHONY : main.i
+src/main.i: src/main.c.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/main.c.i
-.PHONY : main.c.i
+src/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/main.c.i
+.PHONY : src/main.c.i
 
-main.s: main.c.s
-.PHONY : main.s
+src/main.s: src/main.c.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/main.c.s
-.PHONY : main.c.s
+src/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/main.c.s
+.PHONY : src/main.c.s
 
-shell.o: shell.c.o
-.PHONY : shell.o
+src/shell.o: src/shell.c.o
+.PHONY : src/shell.o
 
 # target to build an object file
-shell.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/shell.c.o
-.PHONY : shell.c.o
+src/shell.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/shell.c.o
+.PHONY : src/shell.c.o
 
-shell.i: shell.c.i
-.PHONY : shell.i
+src/shell.i: src/shell.c.i
+.PHONY : src/shell.i
 
 # target to preprocess a source file
-shell.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/shell.c.i
-.PHONY : shell.c.i
+src/shell.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/shell.c.i
+.PHONY : src/shell.c.i
 
-shell.s: shell.c.s
-.PHONY : shell.s
+src/shell.s: src/shell.c.s
+.PHONY : src/shell.s
 
 # target to generate assembly for a file
-shell.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/shell.c.s
-.PHONY : shell.c.s
+src/shell.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/shell.c.s
+.PHONY : src/shell.c.s
+
+src/tokenespacios.o: src/tokenespacios.c.o
+.PHONY : src/tokenespacios.o
+
+# target to build an object file
+src/tokenespacios.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenespacios.c.o
+.PHONY : src/tokenespacios.c.o
+
+src/tokenespacios.i: src/tokenespacios.c.i
+.PHONY : src/tokenespacios.i
+
+# target to preprocess a source file
+src/tokenespacios.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenespacios.c.i
+.PHONY : src/tokenespacios.c.i
+
+src/tokenespacios.s: src/tokenespacios.c.s
+.PHONY : src/tokenespacios.s
+
+# target to generate assembly for a file
+src/tokenespacios.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenespacios.c.s
+.PHONY : src/tokenespacios.c.s
 
 # Help Target
 help:
@@ -213,18 +234,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... shell"
-<<<<<<< HEAD
-=======
-	@echo "... infPipes.o"
-	@echo "... infPipes.i"
-	@echo "... infPipes.s"
->>>>>>> stack29
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... shell.o"
-	@echo "... shell.i"
-	@echo "... shell.s"
+	@echo "... src/infPipes.o"
+	@echo "... src/infPipes.i"
+	@echo "... src/infPipes.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/shell.o"
+	@echo "... src/shell.i"
+	@echo "... src/shell.s"
+	@echo "... src/tokenespacios.o"
+	@echo "... src/tokenespacios.i"
+	@echo "... src/tokenespacios.s"
 .PHONY : help
 
 

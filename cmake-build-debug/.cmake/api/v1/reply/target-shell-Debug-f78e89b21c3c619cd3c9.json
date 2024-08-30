@@ -50,12 +50,9 @@
 			"sourceIndexes" : 
 			[
 				0,
-<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-488711f96181564d6ca4.json
-				1
-========
 				1,
-				2
->>>>>>>> stack29:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-a2a50d401c64b7fc99db.json
+				2,
+				3
 			]
 		}
 	],
@@ -89,12 +86,9 @@
 			"sourceIndexes" : 
 			[
 				0,
-<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-488711f96181564d6ca4.json
-				1
-========
 				1,
-				2
->>>>>>>> stack29:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-a2a50d401c64b7fc99db.json
+				2,
+				3
 			]
 		}
 	],
@@ -103,23 +97,26 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "main.c",
+			"path" : "src/main.c",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "shell.c",
+			"path" : "src/shell.c",
 			"sourceGroupIndex" : 0
-<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-488711f96181564d6ca4.json
-========
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "infPipes.c",
+			"path" : "src/infPipes.c",
 			"sourceGroupIndex" : 0
->>>>>>>> stack29:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-a2a50d401c64b7fc99db.json
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "src/tokenespacios.c",
+			"sourceGroupIndex" : 0
 		}
 	],
 	"type" : "EXECUTABLE"

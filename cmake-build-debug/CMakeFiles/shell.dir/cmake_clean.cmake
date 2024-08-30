@@ -1,13 +1,12 @@
 file(REMOVE_RECURSE
-<<<<<<< HEAD
-=======
-  "CMakeFiles/shell.dir/infPipes.c.o"
-  "CMakeFiles/shell.dir/infPipes.c.o.d"
->>>>>>> stack29
-  "CMakeFiles/shell.dir/main.c.o"
-  "CMakeFiles/shell.dir/main.c.o.d"
-  "CMakeFiles/shell.dir/shell.c.o"
-  "CMakeFiles/shell.dir/shell.c.o.d"
+  "CMakeFiles/shell.dir/src/infPipes.c.o"
+  "CMakeFiles/shell.dir/src/infPipes.c.o.d"
+  "CMakeFiles/shell.dir/src/main.c.o"
+  "CMakeFiles/shell.dir/src/main.c.o.d"
+  "CMakeFiles/shell.dir/src/shell.c.o"
+  "CMakeFiles/shell.dir/src/shell.c.o.d"
+  "CMakeFiles/shell.dir/src/tokenespacios.c.o"
+  "CMakeFiles/shell.dir/src/tokenespacios.c.o.d"
   "shell"
   "shell.pdb"
 )

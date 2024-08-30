@@ -8,12 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-<<<<<<< HEAD
-=======
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/infPipes.c" "CMakeFiles/shell.dir/infPipes.c.o" "gcc" "CMakeFiles/shell.dir/infPipes.c.o.d"
->>>>>>> stack29
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/main.c" "CMakeFiles/shell.dir/main.c.o" "gcc" "CMakeFiles/shell.dir/main.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/shell.c" "CMakeFiles/shell.dir/shell.c.o" "gcc" "CMakeFiles/shell.dir/shell.c.o.d"
+  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/infPipes.c" "CMakeFiles/shell.dir/src/infPipes.c.o" "gcc" "CMakeFiles/shell.dir/src/infPipes.c.o.d"
+  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/main.c" "CMakeFiles/shell.dir/src/main.c.o" "gcc" "CMakeFiles/shell.dir/src/main.c.o.d"
+  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/shell.c" "CMakeFiles/shell.dir/src/shell.c.o" "gcc" "CMakeFiles/shell.dir/src/shell.c.o.d"
+  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenespacios.c" "CMakeFiles/shell.dir/src/tokenespacios.c.o" "gcc" "CMakeFiles/shell.dir/src/tokenespacios.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
