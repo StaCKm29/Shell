@@ -79,7 +79,7 @@ int main()
             if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0)
             {
                 chdir(getenv("HOME"));
-                        }
+            }
             else
             {
                 if (chdir(comandos[1]) != 0)
