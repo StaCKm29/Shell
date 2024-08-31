@@ -129,6 +129,30 @@ shell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/build
 .PHONY : shell/fast
 
+src/ejecutarComandos.o: src/ejecutarComandos.c.o
+.PHONY : src/ejecutarComandos.o
+
+# target to build an object file
+src/ejecutarComandos.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/ejecutarComandos.c.o
+.PHONY : src/ejecutarComandos.c.o
+
+src/ejecutarComandos.i: src/ejecutarComandos.c.i
+.PHONY : src/ejecutarComandos.i
+
+# target to preprocess a source file
+src/ejecutarComandos.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/ejecutarComandos.c.i
+.PHONY : src/ejecutarComandos.c.i
+
+src/ejecutarComandos.s: src/ejecutarComandos.c.s
+.PHONY : src/ejecutarComandos.s
+
+# target to generate assembly for a file
+src/ejecutarComandos.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/ejecutarComandos.c.s
+.PHONY : src/ejecutarComandos.c.s
+
 src/infPipes.o: src/infPipes.c.o
 .PHONY : src/infPipes.o
 
@@ -201,29 +225,53 @@ src/shell.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/shell.c.s
 .PHONY : src/shell.c.s
 
-src/tokenespacios.o: src/tokenespacios.c.o
-.PHONY : src/tokenespacios.o
+src/tokenEspacios.o: src/tokenEspacios.c.o
+.PHONY : src/tokenEspacios.o
 
 # target to build an object file
-src/tokenespacios.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenespacios.c.o
-.PHONY : src/tokenespacios.c.o
+src/tokenEspacios.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenEspacios.c.o
+.PHONY : src/tokenEspacios.c.o
 
-src/tokenespacios.i: src/tokenespacios.c.i
-.PHONY : src/tokenespacios.i
+src/tokenEspacios.i: src/tokenEspacios.c.i
+.PHONY : src/tokenEspacios.i
 
 # target to preprocess a source file
-src/tokenespacios.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenespacios.c.i
-.PHONY : src/tokenespacios.c.i
+src/tokenEspacios.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenEspacios.c.i
+.PHONY : src/tokenEspacios.c.i
 
-src/tokenespacios.s: src/tokenespacios.c.s
-.PHONY : src/tokenespacios.s
+src/tokenEspacios.s: src/tokenEspacios.c.s
+.PHONY : src/tokenEspacios.s
 
 # target to generate assembly for a file
-src/tokenespacios.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenespacios.c.s
-.PHONY : src/tokenespacios.c.s
+src/tokenEspacios.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenEspacios.c.s
+.PHONY : src/tokenEspacios.c.s
+
+src/tokenPipes.o: src/tokenPipes.c.o
+.PHONY : src/tokenPipes.o
+
+# target to build an object file
+src/tokenPipes.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenPipes.c.o
+.PHONY : src/tokenPipes.c.o
+
+src/tokenPipes.i: src/tokenPipes.c.i
+.PHONY : src/tokenPipes.i
+
+# target to preprocess a source file
+src/tokenPipes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenPipes.c.i
+.PHONY : src/tokenPipes.c.i
+
+src/tokenPipes.s: src/tokenPipes.c.s
+.PHONY : src/tokenPipes.s
+
+# target to generate assembly for a file
+src/tokenPipes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenPipes.c.s
+.PHONY : src/tokenPipes.c.s
 
 # Help Target
 help:
@@ -234,6 +282,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... shell"
+	@echo "... src/ejecutarComandos.o"
+	@echo "... src/ejecutarComandos.i"
+	@echo "... src/ejecutarComandos.s"
 	@echo "... src/infPipes.o"
 	@echo "... src/infPipes.i"
 	@echo "... src/infPipes.s"
@@ -243,9 +294,12 @@ help:
 	@echo "... src/shell.o"
 	@echo "... src/shell.i"
 	@echo "... src/shell.s"
-	@echo "... src/tokenespacios.o"
-	@echo "... src/tokenespacios.i"
-	@echo "... src/tokenespacios.s"
+	@echo "... src/tokenEspacios.o"
+	@echo "... src/tokenEspacios.i"
+	@echo "... src/tokenEspacios.s"
+	@echo "... src/tokenPipes.o"
+	@echo "... src/tokenPipes.i"
+	@echo "... src/tokenPipes.s"
 .PHONY : help
 
 
