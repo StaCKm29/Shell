@@ -1,5 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <sys/wait.h>
-#include <string.h>
 
 extern void tokenEspacios(char *comando);
 
@@ -22,18 +24,6 @@ void ejecutarComandos(char **comandos, int num_comandos) {
 
     pid_t pid;
     for(i = 0; i < num_comandos; i++) {
-
-        // El padre debe ejecutar el comando cd antes de llamar a ejecutarComandos.
-        if (strcmp(comandos[0], "cd") == 0) {
-            // Si no hay argumento para cd, cambiar al directorio home
-            if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0) {
-                chdir(getenv("HOME"));
-            } else {
-                if (chdir(comandos[1]) != 0) {
-                    perror("Error cambiando el directorio");
-                }
-            }
-        }
         pid = fork();
         if (pid == 0) {
             //Redireccionar la entrada del proceso.
@@ -82,3 +72,4 @@ void ejecutarComandos(char **comandos, int num_comandos) {
         }
     }
 }
+
