@@ -33,7 +33,7 @@ char **extraerComandos(char *input)
         {
             tamaño_buf += 64;
             comandos = realloc(comandos, tamaño_buf * sizeof(char *));
-            if (!*comandos)
+            if (!comandos)
             {
                 printf("Error en redimensionar memoria");
                 exit(1);
@@ -47,16 +47,39 @@ char **extraerComandos(char *input)
 
 int main()
 {
-    char input[1024]; // Buffer para almacenar la entrada del usuario
-                      // char **comandos = NULL;
-    // int tamaño_buf = 64;
+    int tamaño_buf = 1024;
+    int tamaño_actual = tamaño_buf;
+
+    char *input = malloc(tamaño_buf * sizeof(char));
+    if (!input)
+    {
+        printf("Error en memoria");
+        exit(1);
+    }
+
+    int l = 0, c;
 
     while (1)
     {
         printf("\033[1;37mOhMyShell 👾 \033[0m"); // Imprimir un prompt
-        fgets(input, sizeof(input), stdin);       // Leer la entrada del usuario
-        // Eliminar el salto de línea final que fgets incluye
-        input[strcspn(input, "\n")] = 0;
+
+        l = 0;
+        while ((c = fgetc(stdin)) != '\n' && c != EOF)
+        {
+            input[l++] = (char)c;
+            if (l == tamaño_actual)
+            {
+                tamaño_actual += tamaño_buf;
+                char *temp = realloc(input, tamaño_actual * sizeof(char));
+                if (!temp)
+                {
+                    printf("Error en memoria");
+                    free(input);
+                    exit(1);
+                }
+                input = temp;
+            }
+        }
 
         // Si el usuario ingresa "exit", salir del programa
         if (strcmp(input, "exit") == 0)
