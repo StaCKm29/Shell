@@ -53,8 +53,7 @@
 				1,
 				2,
 				3,
-				4,
-				5
+				4
 			]
 		}
 	],
@@ -91,15 +90,7 @@
 				1,
 				2,
 				3,
-				4,
-				5
-			]
-		},
-		{
-			"name" : "Header Files",
-			"sourceIndexes" : 
-			[
-				6
+				4
 			]
 		}
 	],
@@ -109,12 +100,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/main.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/shell.c",
 			"sourceGroupIndex" : 0
 		},
 		{
@@ -140,11 +125,6 @@
 			"compileGroupIndex" : 0,
 			"path" : "src/tokenPipes.c",
 			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"path" : "src/tokenEspacios.h",
-			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"

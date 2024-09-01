@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <string.h>
 
-extern void tokenEspacios(char *comando);
+extern char **tokenEspacios(char *comando);
 
 const int READ = 0;  // Variable de lectura para pipe
 const int WRITE = 1; // Variable de escritura para pipe
@@ -24,37 +25,51 @@ void ejecutarComandos(char **comandos, int num_comandos) {
 
     pid_t pid;
     for(i = 0; i < num_comandos; i++) {
-        pid = fork();
-        if (pid == 0) {
-            //Redireccionar la entrada del proceso.
-            if(i>0) { //Solo si el proceso actual no es el primer comando.
-                if(dup2(mispipes[(i-1) * 2], READ) < 0) { //dup2() retorna -1 si hay error.
-                    perror("Error duplicando descriptor de archivo (fd) para entrada.\n");
-                    exit(1);
+        char **args = tokenEspacios(comandos[i]); //obtener los argumentos del comando.
+
+        if (strcmp(args[0], "cd") == 0) {
+            // Si no hay argumento para cd, cambiar al directorio home
+            if (args[1] == NULL || strcmp(args[1], "~") == 0) {
+                chdir(getenv("HOME"));
+            } else {
+                if (chdir(args[1]) != 0) {
+                    perror("Error cambiando el directorio");
                 }
-                //se duplica el descriptor de archivo para la entrada. (else)
+                //Se cambia al directorio deseado.
             }
-
-            //Redireccionar la salida del proceso.
-            if (i < num_comandos-1) { //Solo si el proceso actual no es el último comando.
-                if(dup2(mispipes[i * 2 + 1], WRITE) < 0) {
-                    perror("Error duplicando descriptor de archivo (fd) para salida.\n");
-                    exit(1);
+            free(args);
+        } else {
+            pid = fork();
+            if (pid == 0) {
+                //Redireccionar la entrada del proceso.
+                if(i>0) { //Solo si el proceso actual no es el primer comando.
+                    if(dup2(mispipes[(i-1) * 2], READ) < 0) { //dup2() retorna -1 si hay error.
+                        perror("Error duplicando descriptor de archivo (fd) para entrada.\n");
+                        exit(1);
+                    }
+                    //se duplica el descriptor de archivo para la entrada. (else)
                 }
-                //se duplica el descriptor de archivo para la salida. (else)
-            }
+                //Redireccionar la salida del proceso.
+                if (i < num_comandos-1) { //Solo si el proceso actual no es el último comando.
+                    if(dup2(mispipes[i * 2 + 1], WRITE) < 0) {
+                        perror("Error duplicando descriptor de archivo (fd) para salida.\n");
+                        exit(1);
+                    }
+                    //se duplica el descriptor de archivo para la salida. (else)
+                }
 
-            // Cerrar todos los pipes en el proceso hijo
-            for (int j = 0; j < 2 * (num_comandos - 1); j++) {
-                close(mispipes[j]);
-            }
+                // Cerrar todos los pipes en el proceso hijo
+                for (int j = 0; j < 2 * (num_comandos - 1); j++) {
+                    close(mispipes[j]);
+                }
 
-            tokenEspacios(comandos[i]);
-        } else if (pid < 0) {
-            perror("Error en fork()");
-            exit(1);
+                execvp(args[0], args); //ejecutar el comando.
+
+            } else if (pid < 0) {
+                perror("Error en fork()");
+                exit(1);
+            }
         }
-
     }
 
     // Cerrar todos los pipes en el proceso padre
@@ -63,13 +78,8 @@ void ejecutarComandos(char **comandos, int num_comandos) {
     }
 
     // Esperar a que todos los hijos terminen
-    int status; //para guardar el estado de salida de los hijos.
     for (i = 0; i < num_comandos; i++) {
-        pid_t child_pid = waitpid(-1, &status, 0);
-        if (child_pid < 0) {
-            perror("Error esperando proceso hijo");
-            exit(1);
-        }
+        wait(NULL);
     }
 }
 

@@ -31,7 +31,7 @@ void tokenPipes(char *input, char ***comandos, int *num_comandos) {
  * Lo hace a traves de tokens
  * @param comando : la cadena de caracteres que contiene el comando a ejecutar. *comando es el puntero hacia esta cadena.
  */
-void tokenEspacios(char *comando) {
+char **tokenEspacios(char *comando) {
     char *args[1024]; //Arreglo de 1024 punteros que apuntan a los argumentos (char).
     char *token = strtok(comando, " "); //strtok divide la cadena en tokens, en este caso, por espacios.
     int i = 0;

@@ -9,7 +9,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/ejecutarComandos.c" "CMakeFiles/shell.dir/src/ejecutarComandos.c.o" "gcc" "CMakeFiles/shell.dir/src/ejecutarComandos.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/infPipes.c" "CMakeFiles/shell.dir/src/infPipes.c.o" "gcc" "CMakeFiles/shell.dir/src/infPipes.c.o.d"
   "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/main.c" "CMakeFiles/shell.dir/src/main.c.o" "gcc" "CMakeFiles/shell.dir/src/main.c.o.d"
   "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenEspacios.c" "CMakeFiles/shell.dir/src/tokenEspacios.c.o" "gcc" "CMakeFiles/shell.dir/src/tokenEspacios.c.o.d"
   "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenPipes.c" "CMakeFiles/shell.dir/src/tokenPipes.c.o" "gcc" "CMakeFiles/shell.dir/src/tokenPipes.c.o.d"
