@@ -8,5 +8,6 @@ add_executable(shell
         src/tokenEspacios.c
         src/ejecutarComandos.c
         src/tokenPipes.c
+        src/alarma.c
 )
 
