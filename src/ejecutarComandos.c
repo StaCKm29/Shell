@@ -5,7 +5,7 @@
 #include <string.h>
 
 extern char **tokenEspacios(char *comando);
-extern void setAlarma(int segundos, char *mensaje);
+extern void manejoAlarma(char **args);
 const int READ = 0;  // Variable de lectura para pipe
 const int WRITE = 1; // Variable de escritura para pipe
 
@@ -38,18 +38,8 @@ void ejecutarComandos(char **comandos, int num_comandos) {
                 //Se cambia al directorio deseado.
             }
             free(args);
-        } else if(strcmp(args[0], "setAlarma") == 0){
-			char *finalCadena;
-			int segundos = strtol(args[1], &finalCadena, 10);
-			if(args[1] == NULL || args[2] == NULL){
-                printf("Error: Alguno de los argumentos es nulo.\n");
-			}
-			else if (*finalCadena != '\0' || segundos <= 0) {
-		        printf("Error: El argumento no es un número válido.\n");
-            }
-            else{
-                setAlarma(segundos, args[2]);
-            }
+        } else if(strcmp(args[0], "set") == 0 || strcmp(args[1], "alarma") == 0){ //Caso de set alarma
+			manejoAlarma(args);
 		}else {
             pid = fork();
             if (pid == 0) {
