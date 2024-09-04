@@ -153,30 +153,6 @@ src/ejecutarComandos.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/ejecutarComandos.c.s
 .PHONY : src/ejecutarComandos.c.s
 
-src/infPipes.o: src/infPipes.c.o
-.PHONY : src/infPipes.o
-
-# target to build an object file
-src/infPipes.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/infPipes.c.o
-.PHONY : src/infPipes.c.o
-
-src/infPipes.i: src/infPipes.c.i
-.PHONY : src/infPipes.i
-
-# target to preprocess a source file
-src/infPipes.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/infPipes.c.i
-.PHONY : src/infPipes.c.i
-
-src/infPipes.s: src/infPipes.c.s
-.PHONY : src/infPipes.s
-
-# target to generate assembly for a file
-src/infPipes.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/infPipes.c.s
-.PHONY : src/infPipes.c.s
-
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
@@ -261,9 +237,6 @@ help:
 	@echo "... src/ejecutarComandos.o"
 	@echo "... src/ejecutarComandos.i"
 	@echo "... src/ejecutarComandos.s"
-	@echo "... src/infPipes.o"
-	@echo "... src/infPipes.i"
-	@echo "... src/infPipes.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

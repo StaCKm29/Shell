@@ -52,8 +52,7 @@
 				0,
 				1,
 				2,
-				3,
-				4
+				3
 			]
 		}
 	],
@@ -89,8 +88,7 @@
 				0,
 				1,
 				2,
-				3,
-				4
+				3
 			]
 		}
 	],
@@ -100,12 +98,6 @@
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
 			"path" : "src/main.c",
-			"sourceGroupIndex" : 0
-		},
-		{
-			"backtrace" : 1,
-			"compileGroupIndex" : 0,
-			"path" : "src/infPipes.c",
 			"sourceGroupIndex" : 0
 		},
 		{
