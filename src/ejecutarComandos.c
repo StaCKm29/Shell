@@ -38,8 +38,9 @@ void ejecutarComandos(char **comandos, int num_comandos) {
                 //Se cambia al directorio deseado.
             }
             free(args);
-        } else if(strcmp(args[0], "set") == 0 || strcmp(args[1], "alarma") == 0){ //Caso de set alarma
+        } else if(strcmp(args[0], "set") == 0 && strcmp(args[1], "alarma") == 0){ //Caso de set alarma
 			manejoAlarma(args);
+			free(args);
 		}else {
             pid = fork();
             if (pid == 0) {
