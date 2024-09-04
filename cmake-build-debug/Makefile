@@ -129,6 +129,30 @@ shell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/build
 .PHONY : shell/fast
 
+src/alarma.o: src/alarma.c.o
+.PHONY : src/alarma.o
+
+# target to build an object file
+src/alarma.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/alarma.c.o
+.PHONY : src/alarma.c.o
+
+src/alarma.i: src/alarma.c.i
+.PHONY : src/alarma.i
+
+# target to preprocess a source file
+src/alarma.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/alarma.c.i
+.PHONY : src/alarma.c.i
+
+src/alarma.s: src/alarma.c.s
+.PHONY : src/alarma.s
+
+# target to generate assembly for a file
+src/alarma.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/alarma.c.s
+.PHONY : src/alarma.c.s
+
 src/ejecutarComandos.o: src/ejecutarComandos.c.o
 .PHONY : src/ejecutarComandos.o
 
@@ -152,30 +176,6 @@ src/ejecutarComandos.s: src/ejecutarComandos.c.s
 src/ejecutarComandos.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/ejecutarComandos.c.s
 .PHONY : src/ejecutarComandos.c.s
-
-src/infPipes.o: src/infPipes.c.o
-.PHONY : src/infPipes.o
-
-# target to build an object file
-src/infPipes.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/infPipes.c.o
-.PHONY : src/infPipes.c.o
-
-src/infPipes.i: src/infPipes.c.i
-.PHONY : src/infPipes.i
-
-# target to preprocess a source file
-src/infPipes.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/infPipes.c.i
-.PHONY : src/infPipes.c.i
-
-src/infPipes.s: src/infPipes.c.s
-.PHONY : src/infPipes.s
-
-# target to generate assembly for a file
-src/infPipes.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/infPipes.c.s
-.PHONY : src/infPipes.c.s
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
@@ -258,12 +258,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... shell"
+	@echo "... src/alarma.o"
+	@echo "... src/alarma.i"
+	@echo "... src/alarma.s"
 	@echo "... src/ejecutarComandos.o"
 	@echo "... src/ejecutarComandos.i"
 	@echo "... src/ejecutarComandos.s"
-	@echo "... src/infPipes.o"
-	@echo "... src/infPipes.i"
-	@echo "... src/infPipes.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
