@@ -39,11 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "shell::@6890427a1f51a3e7e1df",
-<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-89c2cece702fc3bedd52.json
-					"jsonFile" : "target-shell-Debug-bbe5da40c48815c33f07.json",
-========
 					"jsonFile" : "target-shell-Debug-9db7e133416a4954513f.json",
->>>>>>>> castillo:cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-77f3d28b9e4ae2db0802.json
 					"name" : "shell",
 					"projectIndex" : 0
 				}
