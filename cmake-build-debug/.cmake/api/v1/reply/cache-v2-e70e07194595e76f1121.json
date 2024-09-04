@@ -1030,42 +1030,6 @@
 			"value" : "TRUE"
 		},
 		{
-			"name" : "shell_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug"
-		},
-		{
-			"name" : "shell_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "shell_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell"
-		},
-		{
 			"name" : "src/shell_BINARY_DIR",
 			"properties" : 
 			[

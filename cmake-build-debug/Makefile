@@ -129,6 +129,30 @@ shell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/build
 .PHONY : shell/fast
 
+src/alarma.o: src/alarma.c.o
+.PHONY : src/alarma.o
+
+# target to build an object file
+src/alarma.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/alarma.c.o
+.PHONY : src/alarma.c.o
+
+src/alarma.i: src/alarma.c.i
+.PHONY : src/alarma.i
+
+# target to preprocess a source file
+src/alarma.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/alarma.c.i
+.PHONY : src/alarma.c.i
+
+src/alarma.s: src/alarma.c.s
+.PHONY : src/alarma.s
+
+# target to generate assembly for a file
+src/alarma.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/alarma.c.s
+.PHONY : src/alarma.c.s
+
 src/ejecutarComandos.o: src/ejecutarComandos.c.o
 .PHONY : src/ejecutarComandos.o
 
@@ -234,6 +258,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... shell"
+	@echo "... src/alarma.o"
+	@echo "... src/alarma.i"
+	@echo "... src/alarma.s"
 	@echo "... src/ejecutarComandos.o"
 	@echo "... src/ejecutarComandos.i"
 	@echo "... src/ejecutarComandos.s"

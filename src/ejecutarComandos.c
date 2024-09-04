@@ -5,7 +5,7 @@
 #include <string.h>
 
 extern char **tokenEspacios(char *comando);
-
+extern void manejoAlarma(char **args);
 const int READ = 0;  // Variable de lectura para pipe
 const int WRITE = 1; // Variable de escritura para pipe
 
@@ -38,7 +38,10 @@ void ejecutarComandos(char **comandos, int num_comandos) {
                 //Se cambia al directorio deseado.
             }
             free(args);
-        } else {
+        } else if(strcmp(args[0], "set") == 0 && strcmp(args[1], "alarma") == 0){ //Caso de set alarma
+			manejoAlarma(args);
+			free(args);
+		}else {
             pid = fork();
             if (pid == 0) {
                 //Redireccionar la entrada del proceso.
