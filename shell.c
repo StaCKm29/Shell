@@ -58,10 +58,18 @@ int main()
     }
 
     int l = 0, c;
+    char ruta[1024];
 
     while (1)
     {
-        printf("\033[1;37mOhMyShell 👾 \033[0m"); // Imprimir un prompt
+        if (getcwd(ruta, sizeof(ruta)) == NULL)
+        {
+            printf("Error en cwd");
+            free(input);
+            exit(1);
+        }
+
+        printf("\033[1;37mOhMyShell 👾 %s \033[0m", ruta); // Imprimir un prompt
 
         l = 0;
         while ((c = fgetc(stdin)) != '\n' && c != EOF)
@@ -80,6 +88,7 @@ int main()
                 input = temp;
             }
         }
+        input[l] = '\0';
 
         // Si el usuario ingresa "exit", salir del programa
         if (strcmp(input, "exit") == 0)
