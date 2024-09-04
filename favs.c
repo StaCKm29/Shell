@@ -14,6 +14,55 @@ typedef struct
     char ruta_archivo[1024];
 } favs;
 
+char **extraerComandos(char *input);
+void iniciarFavs(favs *favs);
+void crearArchivo(favs *favs, char *ruta);
+void agregarComando(favs *favs, char **comando);
+void mostrarComandos(char *ruta);
+void mostrarComandosPrintf(favs *favs);
+void eliminarComando(favs *favs, int num1, int num2);
+void borrarComandos(char *ruta);
+void buscarComandos(favs *favs, const char *sstring);
+void ejecutarComando(favs *favs, int num);
+void cargarComando(favs *favs, char *ruta);
+int verificarComandoEjecutable(char **comando);
+void freeFavs(favs *favs);
+void guardarComandos(favs *favs);
+void elegirFavs(favs *favs, char **comando);
+
+char **extraerComandos(char *input)
+{
+    int i = 0, tamaño_buf = 64;
+    char *token = strtok(input, " ");
+
+    char **comandos = malloc(tamaño_buf * sizeof(char *));
+    if (!comandos)
+    {
+        printf("Error en memoria");
+        exit(1);
+    }
+
+    while (token != NULL)
+    {
+        comandos[i] = token;
+        i++;
+
+        if (i >= tamaño_buf)
+        {
+            tamaño_buf += 64;
+            comandos = realloc(comandos, tamaño_buf * sizeof(char *));
+            if (!comandos)
+            {
+                printf("Error en redimensionar memoria");
+                exit(1);
+            }
+        }
+        token = strtok(NULL, " ");
+    }
+    comandos[i] = NULL;
+    return comandos;
+}
+
 // Inicializo la estructura de datos
 void iniciarFavs(favs *favs)
 {
@@ -28,9 +77,10 @@ void crearArchivo(favs *favs, char *ruta)
     FILE *archivo = fopen(ruta, "w");
     if (archivo == NULL)
     {
-        printf("Error al abrir el archivo");
+        printf("Error al abrir el archivo\n");
         return;
     }
+    strcpy(favs->ruta_archivo, ruta);
 
     // Recorrer los comandos y guardarlos en el archivo
     for (int i = 0; i < favs->tamaño; i++)
@@ -46,9 +96,35 @@ void crearArchivo(favs *favs, char *ruta)
     printf("comandos guardados\n");
 }
 
+void crearArchivoAlSalir(char *ruta)
+{
+    FILE *archivo = fopen(ruta, "w");
+    if (archivo == NULL)
+    {
+        perror("Error al abrir el archivo");
+        return;
+    }
+
+    fprintf(archivo, "%s", ruta);
+    fclose(archivo);
+}
+
 // Agregar un comando a la lista de favoritos (Recordar no agregar los comandos relacionados con favs)
 void agregarComando(favs *favs, char **comando)
 {
+    // Verificar si el comando es válido antes de agregar
+    if (strcmp(comando[0], "cd") == 0)
+    {
+        // No agregar "cd" a la lista de favoritos
+        return;
+    }
+
+    if (!verificarComandoEjecutable(comando))
+    {
+        printf("El comando '%s' no es válido o no se puede ejecutar.\n", comando[0]);
+        return;
+    }
+
     // Aseguro que no se agregue comando favs,
     if (strcmp(comando[0], "favs") == 0)
     {
@@ -158,9 +234,10 @@ void agregarComando(favs *favs, char **comando)
 void mostrarComandos(char *ruta)
 {
     FILE *archivo = fopen(ruta, "r");
+    printf("Mostrando comandos: \n");
     if (archivo == NULL)
     {
-        printf("Error al abrir el archivo");
+        printf("Error al abrir el archivo\n");
         return;
     }
 
@@ -256,13 +333,34 @@ void buscarComandos(favs *favs, const char *sstring)
         printf("No se encontraron comandos que contengan '%s'.\n", sstring);
     }
 }
-// Uso de exec para comando elegido
-void ejecutarComando()
+
+void ejecutarComando(favs *favs, int num)
 {
-}
-// funcion switch para elegir que funcion usar mediante el cmd
-void elegirFavs()
-{
+    if (num < 1 || num > favs->tamaño)
+    {
+        printf("Número de comando inválido.\n");
+        return;
+    }
+
+    // Solo tomar el comando principal
+    char *comando = favs->comandos[num - 1][0];
+    char *args[] = {comando, NULL};
+
+    pid_t pid = fork();
+    if (pid == 0)
+    { // Proceso hijo
+        execvp(args[0], args);
+        perror("Error al ejecutar el comando");
+        exit(1);
+    }
+    else if (pid > 0)
+    {
+        wait(NULL); // Esperar a que el hijo termine
+    }
+    else
+    {
+        perror("Error creando el proceso");
+    }
 }
 
 // Despliega los comandos del archivo y los devuelve a la memoria
@@ -311,35 +409,29 @@ void cargarComando(favs *favs, char *ruta)
     printf("comandos cargados correctamente en %s\n", ruta);
 }
 
-// Verifica si existe el comando
-int verificarComando(const char *comando)
+int verificarComandoEjecutable(char **comando)
 {
-    char *path_env = getenv("PATH");
-    if (path_env == NULL)
+    // Crear un proceso hijo para ejecutar el comando
+    pid_t pid = fork();
+    if (pid == 0)
     {
-        printf("No se pudo obtener la variable de entorno PATH\n");
+        // Proceso hijo
+        execvp(comando[0], comando);
+        perror("Error ejecutando el comando");
+        exit(1);
+    }
+    else if (pid > 0)
+    {
+        // Proceso padre espera a que el hijo termine
+        int status;
+        waitpid(pid, &status, 0);
+        return WIFEXITED(status) && WEXITSTATUS(status) == 0;
+    }
+    else
+    {
+        perror("Error creando el proceso");
         return 0;
     }
-
-    char *path = strdup(path_env); // Copiar el PATH
-    char *directorio = strtok(path, ":");
-
-    while (directorio != NULL)
-    {
-        char ruta_comando[1024];
-        snprintf(ruta_comando, sizeof(ruta_comando), "%s/%s", directorio, comando);
-
-        if (access(ruta_comando, X_OK) == 0)
-        {
-            free(path);
-            return 1; // Comando encontrado y ejecutable
-        }
-
-        directorio = strtok(NULL, ":");
-    }
-
-    free(path);
-    return 0; // Comando no encontrado
 }
 
 void freeFavs(favs *favs)
@@ -359,82 +451,217 @@ void freeFavs(favs *favs)
     free(favs->comandos);
 }
 
+void guardarComandos(favs *favs)
+{
+    // Abre el archivo en modo de escritura
+    FILE *archivo = fopen(favs->ruta_archivo, "w");
+    if (archivo == NULL)
+    {
+        perror("Error al abrir el archivo para guardar comandos");
+        return;
+    }
+
+    // Recorre la lista de comandos y guarda cada uno en el archivo
+    for (int i = 0; i < favs->tamaño; i++)
+    {
+        fprintf(archivo, "%d-", i + 1);
+        for (int j = 0; favs->comandos[i][j] != NULL; j++)
+        {
+            fprintf(archivo, "%s ", favs->comandos[i][j]);
+        }
+        fprintf(archivo, "\n"); // Nueva línea para separar comandos
+    }
+
+    fclose(archivo);
+    printf("Comandos guardados en %s\n", favs->ruta_archivo);
+}
+
+// funcion switch para elegir que funcion usar mediante el cmd
+void elegirFavs(favs *favs, char **comando)
+{
+    if (strcmp(comando[1], "crear") == 0)
+    {
+        if (comando[2] != NULL)
+        {
+            strcpy(favs->ruta_archivo, comando[2]);
+            crearArchivo(favs, favs->ruta_archivo);
+        }
+        else
+        {
+            printf("Error: Se requiere una ruta de archivo para crear.\n");
+        }
+    }
+    else if (strcmp(comando[1], "mostrar") == 0)
+    {
+        mostrarComandos(favs->ruta_archivo);
+    }
+    else if (strcmp(comando[1], "eliminar") == 0)
+    {
+        if (comando[2] != NULL)
+        {
+            int num1, num2;
+            if (sscanf(comando[2], "%d,%d", &num1, &num2) == 2)
+            {
+                eliminarComando(favs, num1, num2);
+            }
+            else
+            {
+                printf("Error: Debes proporcionar dos números separados por coma.\n");
+            }
+        }
+        else
+        {
+            printf("Error: Debes proporcionar los números de comandos a eliminar.\n");
+        }
+    }
+    else if (strcmp(comando[1], "buscar") == 0)
+    {
+        if (comando[2] != NULL)
+        {
+            buscarComandos(favs, comando[2]);
+        }
+        else
+        {
+            printf("Error: Debes proporcionar un substring para buscar.\n");
+        }
+    }
+    else if (strcmp(comando[1], "borrar") == 0)
+    {
+        borrarComandos(favs->ruta_archivo);
+        favs->tamaño = 0; // Actualizar tamaño a 0 ya que se borran todos los comandos
+    }
+    else if (strcmp(comando[1], "cargar") == 0)
+    {
+        cargarComando(favs, favs->ruta_archivo);
+        mostrarComandosPrintf(favs); // Mostrar los comandos cargados en la memoria
+    }
+    else if (strcmp(comando[1], "guardar") == 0)
+    {
+        guardarComandos(favs);
+    }
+    else if (strcmp(comando[2], "ejecutar") == 0)
+    {
+        if (comando[2] != NULL)
+        {
+            int num = atoi(comando[1]);
+            ejecutarComando(favs, num);
+        }
+        else
+        {
+            printf("Error: Debes proporcionar el número del comando a ejecutar.\n");
+        }
+    }
+    else
+    {
+        printf("Error: Comando de favs no reconocido.\n");
+    }
+}
+
 int main()
 {
     favs misFavoritos;
     iniciarFavs(&misFavoritos);
 
-    char *cmd1[] = {"ls", "-l", NULL};
-    char *cmd2[] = {"ls", "-k", NULL};
-    char *cmd3[] = {"ls", "-s", "pepe", NULL};
-    char *cmd4[] = {"cd", "-l", NULL};
-    char *cmd5[] = {"we", "-k", NULL};
-    char *cmd6[] = {"xd", "-s", "pepe", NULL};
-    char *cmd7[] = {"meme", "-l", NULL};
-    char *cmd8[] = {"olui", "-k", NULL};
-    char *cmd9[] = {"as", "-s", "pepe", NULL};
-    char *cmd10[] = {"cx", "-l", NULL};
-    char *cmd11[] = {"cat", "-k", NULL};
-    char *cmd12[] = {"ls", "esquere", "asd", NULL};
+    int tamaño_buf = 1024;
+    int tamaño_actual = tamaño_buf;
 
-    agregarComando(&misFavoritos, cmd1);
-    agregarComando(&misFavoritos, cmd2);
-    agregarComando(&misFavoritos, cmd3);
-    agregarComando(&misFavoritos, cmd4);
-    agregarComando(&misFavoritos, cmd5);
-    agregarComando(&misFavoritos, cmd6);
-    agregarComando(&misFavoritos, cmd7);
-    agregarComando(&misFavoritos, cmd8);
-    agregarComando(&misFavoritos, cmd9);
-    agregarComando(&misFavoritos, cmd10);
-    agregarComando(&misFavoritos, cmd11);
-    agregarComando(&misFavoritos, cmd12);
+    char *input = malloc(tamaño_buf * sizeof(char));
+    if (!input)
+    {
+        printf("Error en memoria");
+        exit(1);
+    }
 
-    char ruta_archivo[1024] = "./comandos_favoritos.txt";
+    int l = 0, c;
+    char ruta[1024];
 
-    crearArchivo(&misFavoritos, ruta_archivo);
-    printf("Antes\n");
-    mostrarComandos(ruta_archivo);
+    while (1)
+    {
+        if (getcwd(ruta, sizeof(ruta)) == NULL)
+        {
+            printf("Error en cwd");
+            free(input);
+            exit(1);
+        }
 
-    eliminarComando(&misFavoritos, 1, 3);
+        printf("\033[1;37mOhMyShell 👾 %s \033[0m", ruta); // Imprimir un prompt
 
-    char ruta_archivo2[1024] = "./comandos_favoritoseliminados.txt";
+        l = 0;
+        while ((c = fgetc(stdin)) != '\n' && c != EOF)
+        {
+            input[l++] = (char)c;
+            if (l == tamaño_actual)
+            {
+                tamaño_actual += tamaño_buf;
+                char *temp = realloc(input, tamaño_actual * sizeof(char));
+                if (!temp)
+                {
+                    printf("Error en memoria");
+                    free(input);
+                    exit(1);
+                }
+                input = temp;
+            }
+        }
+        input[l] = '\0';
 
-    crearArchivo(&misFavoritos, ruta_archivo2);
-    printf("\nDespues\n");
-    mostrarComandos(ruta_archivo2);
+        // Si el usuario ingresa "exit", salir del programa
+        if (strcmp(input, "exit") == 0)
+        {
+            crearArchivo(&misFavoritos, "");
+            break;
+        }
 
-    borrarComandos(ruta_archivo);
-    printf("borrar todos los comandos:\n");
-    mostrarComandos(ruta_archivo);
+        // Si el usuario presiona enter sin ingresar nada, continuar
+        if (strlen(input) == 0)
+        {
+            continue;
+        }
 
-    printf("\nBuscando comandos que contengan 'xyz':\n");
-    buscarComandos(&misFavoritos, "xyz");
+        char **comandos = extraerComandos(input);
 
-    printf("\nBuscando comandos que contengan 'xd':\n");
-    buscarComandos(&misFavoritos, "xd");
+        // El padre debe ejecutar el comando cd.
+        if (strcmp(comandos[0], "cd") == 0)
+        {
+            if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0)
+            {
+                chdir(getenv("HOME"));
+                char *comando[] = {"cd", NULL};
+                agregarComando(&misFavoritos, comando);
+            }
+            else
+            {
+                if (chdir(comandos[1]) != 0)
+                {
+                    perror("Error cambiando el directorio");
+                }
+            }
+            agregarComando(&misFavoritos, comandos);
+        }
+        else if (strcmp(comandos[0], "favs") == 0)
+        {
+            elegirFavs(&misFavoritos, comandos);
+        }
+        else
+        {
+            if (fork() == 0)
+            { // Proceso hijo
+                execvp(comandos[0], comandos);
+                perror("Error ejecutando el comando");
+                exit(1);
+            }
+            else
+            {
+                wait(NULL);
+                agregarComando(&misFavoritos, comandos);
+            }
+        }
 
-    // Cargar los comandos desde el archivo
-    // cargarComando(&misFavoritos, ruta_archivo);
+        free(comandos);
+    }
 
-    // Mostrar comandos
-    // mostrarComandos(ruta_archivo);
-
-    // Liberar memoria (pendiente de implementar)
+    // Liberar memoria y salir
     freeFavs(&misFavoritos);
-
-    // char comando[100];
-
-    // printf("Ingrese un comando: ");
-    // scanf("%s", comando);
-
-    // if (verificarComando(comando))
-    // {
-    //     printf("El comando '%s' está correctamente escrito y es ejecutable.\n", comando);
-    // }
-    // else
-    // {
-    //     printf("El comando '%s' no está correctamente escrito o no es ejecutable.\n", comando);
-    // }
+    free(input);
     return 0;
 }
