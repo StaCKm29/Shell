@@ -8,12 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/alarma.c" "CMakeFiles/shell.dir/src/alarma.c.o" "gcc" "CMakeFiles/shell.dir/src/alarma.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/ejecutarComandos.c" "CMakeFiles/shell.dir/src/ejecutarComandos.c.o" "gcc" "CMakeFiles/shell.dir/src/ejecutarComandos.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/favs.c" "CMakeFiles/shell.dir/src/favs.c.o" "gcc" "CMakeFiles/shell.dir/src/favs.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/main.c" "CMakeFiles/shell.dir/src/main.c.o" "gcc" "CMakeFiles/shell.dir/src/main.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenEspacios.c" "CMakeFiles/shell.dir/src/tokenEspacios.c.o" "gcc" "CMakeFiles/shell.dir/src/tokenEspacios.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenPipes.c" "CMakeFiles/shell.dir/src/tokenPipes.c.o" "gcc" "CMakeFiles/shell.dir/src/tokenPipes.c.o.d"
+  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/infPipes.c" "CMakeFiles/shell.dir/infPipes.c.o" "gcc" "CMakeFiles/shell.dir/infPipes.c.o.d"
+  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/main.c" "CMakeFiles/shell.dir/main.c.o" "gcc" "CMakeFiles/shell.dir/main.c.o.d"
+  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/shell.c" "CMakeFiles/shell.dir/shell.c.o" "gcc" "CMakeFiles/shell.dir/shell.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

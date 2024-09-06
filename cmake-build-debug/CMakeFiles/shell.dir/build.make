@@ -69,111 +69,63 @@ include CMakeFiles/shell.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/shell.dir/flags.make
 
-CMakeFiles/shell.dir/src/main.c.o: CMakeFiles/shell.dir/flags.make
-CMakeFiles/shell.dir/src/main.c.o: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/main.c
-CMakeFiles/shell.dir/src/main.c.o: CMakeFiles/shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/shell.dir/src/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/shell.dir/src/main.c.o -MF CMakeFiles/shell.dir/src/main.c.o.d -o CMakeFiles/shell.dir/src/main.c.o -c /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/main.c
+CMakeFiles/shell.dir/main.c.o: CMakeFiles/shell.dir/flags.make
+CMakeFiles/shell.dir/main.c.o: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/main.c
+CMakeFiles/shell.dir/main.c.o: CMakeFiles/shell.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/shell.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/shell.dir/main.c.o -MF CMakeFiles/shell.dir/main.c.o.d -o CMakeFiles/shell.dir/main.c.o -c /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/main.c
 
-CMakeFiles/shell.dir/src/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/shell.dir/src/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/main.c > CMakeFiles/shell.dir/src/main.c.i
+CMakeFiles/shell.dir/main.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/shell.dir/main.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/main.c > CMakeFiles/shell.dir/main.c.i
 
-CMakeFiles/shell.dir/src/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/shell.dir/src/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/main.c -o CMakeFiles/shell.dir/src/main.c.s
+CMakeFiles/shell.dir/main.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/shell.dir/main.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/main.c -o CMakeFiles/shell.dir/main.c.s
 
-CMakeFiles/shell.dir/src/tokenEspacios.c.o: CMakeFiles/shell.dir/flags.make
-CMakeFiles/shell.dir/src/tokenEspacios.c.o: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenEspacios.c
-CMakeFiles/shell.dir/src/tokenEspacios.c.o: CMakeFiles/shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/shell.dir/src/tokenEspacios.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/shell.dir/src/tokenEspacios.c.o -MF CMakeFiles/shell.dir/src/tokenEspacios.c.o.d -o CMakeFiles/shell.dir/src/tokenEspacios.c.o -c /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenEspacios.c
+CMakeFiles/shell.dir/shell.c.o: CMakeFiles/shell.dir/flags.make
+CMakeFiles/shell.dir/shell.c.o: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/shell.c
+CMakeFiles/shell.dir/shell.c.o: CMakeFiles/shell.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/shell.dir/shell.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/shell.dir/shell.c.o -MF CMakeFiles/shell.dir/shell.c.o.d -o CMakeFiles/shell.dir/shell.c.o -c /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/shell.c
 
-CMakeFiles/shell.dir/src/tokenEspacios.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/shell.dir/src/tokenEspacios.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenEspacios.c > CMakeFiles/shell.dir/src/tokenEspacios.c.i
+CMakeFiles/shell.dir/shell.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/shell.dir/shell.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/shell.c > CMakeFiles/shell.dir/shell.c.i
 
-CMakeFiles/shell.dir/src/tokenEspacios.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/shell.dir/src/tokenEspacios.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenEspacios.c -o CMakeFiles/shell.dir/src/tokenEspacios.c.s
+CMakeFiles/shell.dir/shell.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/shell.dir/shell.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/shell.c -o CMakeFiles/shell.dir/shell.c.s
 
-CMakeFiles/shell.dir/src/ejecutarComandos.c.o: CMakeFiles/shell.dir/flags.make
-CMakeFiles/shell.dir/src/ejecutarComandos.c.o: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/ejecutarComandos.c
-CMakeFiles/shell.dir/src/ejecutarComandos.c.o: CMakeFiles/shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/shell.dir/src/ejecutarComandos.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/shell.dir/src/ejecutarComandos.c.o -MF CMakeFiles/shell.dir/src/ejecutarComandos.c.o.d -o CMakeFiles/shell.dir/src/ejecutarComandos.c.o -c /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/ejecutarComandos.c
+CMakeFiles/shell.dir/infPipes.c.o: CMakeFiles/shell.dir/flags.make
+CMakeFiles/shell.dir/infPipes.c.o: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/infPipes.c
+CMakeFiles/shell.dir/infPipes.c.o: CMakeFiles/shell.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/shell.dir/infPipes.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/shell.dir/infPipes.c.o -MF CMakeFiles/shell.dir/infPipes.c.o.d -o CMakeFiles/shell.dir/infPipes.c.o -c /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/infPipes.c
 
-CMakeFiles/shell.dir/src/ejecutarComandos.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/shell.dir/src/ejecutarComandos.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/ejecutarComandos.c > CMakeFiles/shell.dir/src/ejecutarComandos.c.i
+CMakeFiles/shell.dir/infPipes.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/shell.dir/infPipes.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/infPipes.c > CMakeFiles/shell.dir/infPipes.c.i
 
-CMakeFiles/shell.dir/src/ejecutarComandos.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/shell.dir/src/ejecutarComandos.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/ejecutarComandos.c -o CMakeFiles/shell.dir/src/ejecutarComandos.c.s
-
-CMakeFiles/shell.dir/src/tokenPipes.c.o: CMakeFiles/shell.dir/flags.make
-CMakeFiles/shell.dir/src/tokenPipes.c.o: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenPipes.c
-CMakeFiles/shell.dir/src/tokenPipes.c.o: CMakeFiles/shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/shell.dir/src/tokenPipes.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/shell.dir/src/tokenPipes.c.o -MF CMakeFiles/shell.dir/src/tokenPipes.c.o.d -o CMakeFiles/shell.dir/src/tokenPipes.c.o -c /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenPipes.c
-
-CMakeFiles/shell.dir/src/tokenPipes.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/shell.dir/src/tokenPipes.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenPipes.c > CMakeFiles/shell.dir/src/tokenPipes.c.i
-
-CMakeFiles/shell.dir/src/tokenPipes.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/shell.dir/src/tokenPipes.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenPipes.c -o CMakeFiles/shell.dir/src/tokenPipes.c.s
-
-CMakeFiles/shell.dir/src/alarma.c.o: CMakeFiles/shell.dir/flags.make
-CMakeFiles/shell.dir/src/alarma.c.o: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/alarma.c
-CMakeFiles/shell.dir/src/alarma.c.o: CMakeFiles/shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/shell.dir/src/alarma.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/shell.dir/src/alarma.c.o -MF CMakeFiles/shell.dir/src/alarma.c.o.d -o CMakeFiles/shell.dir/src/alarma.c.o -c /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/alarma.c
-
-CMakeFiles/shell.dir/src/alarma.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/shell.dir/src/alarma.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/alarma.c > CMakeFiles/shell.dir/src/alarma.c.i
-
-CMakeFiles/shell.dir/src/alarma.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/shell.dir/src/alarma.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/alarma.c -o CMakeFiles/shell.dir/src/alarma.c.s
-
-CMakeFiles/shell.dir/src/favs.c.o: CMakeFiles/shell.dir/flags.make
-CMakeFiles/shell.dir/src/favs.c.o: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/favs.c
-CMakeFiles/shell.dir/src/favs.c.o: CMakeFiles/shell.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/shell.dir/src/favs.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/shell.dir/src/favs.c.o -MF CMakeFiles/shell.dir/src/favs.c.o.d -o CMakeFiles/shell.dir/src/favs.c.o -c /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/favs.c
-
-CMakeFiles/shell.dir/src/favs.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/shell.dir/src/favs.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/favs.c > CMakeFiles/shell.dir/src/favs.c.i
-
-CMakeFiles/shell.dir/src/favs.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/shell.dir/src/favs.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/favs.c -o CMakeFiles/shell.dir/src/favs.c.s
+CMakeFiles/shell.dir/infPipes.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/shell.dir/infPipes.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/infPipes.c -o CMakeFiles/shell.dir/infPipes.c.s
 
 # Object files for target shell
 shell_OBJECTS = \
-"CMakeFiles/shell.dir/src/main.c.o" \
-"CMakeFiles/shell.dir/src/tokenEspacios.c.o" \
-"CMakeFiles/shell.dir/src/ejecutarComandos.c.o" \
-"CMakeFiles/shell.dir/src/tokenPipes.c.o" \
-"CMakeFiles/shell.dir/src/alarma.c.o" \
-"CMakeFiles/shell.dir/src/favs.c.o"
+"CMakeFiles/shell.dir/main.c.o" \
+"CMakeFiles/shell.dir/shell.c.o" \
+"CMakeFiles/shell.dir/infPipes.c.o"
 
 # External object files for target shell
 shell_EXTERNAL_OBJECTS =
 
-shell: CMakeFiles/shell.dir/src/main.c.o
-shell: CMakeFiles/shell.dir/src/tokenEspacios.c.o
-shell: CMakeFiles/shell.dir/src/ejecutarComandos.c.o
-shell: CMakeFiles/shell.dir/src/tokenPipes.c.o
-shell: CMakeFiles/shell.dir/src/alarma.c.o
-shell: CMakeFiles/shell.dir/src/favs.c.o
+shell: CMakeFiles/shell.dir/main.c.o
+shell: CMakeFiles/shell.dir/shell.c.o
+shell: CMakeFiles/shell.dir/infPipes.c.o
 shell: CMakeFiles/shell.dir/build.make
 shell: CMakeFiles/shell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable shell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable shell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/shell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -129,149 +129,77 @@ shell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/build
 .PHONY : shell/fast
 
-src/alarma.o: src/alarma.c.o
-.PHONY : src/alarma.o
+infPipes.o: infPipes.c.o
+.PHONY : infPipes.o
 
 # target to build an object file
-src/alarma.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/alarma.c.o
-.PHONY : src/alarma.c.o
+infPipes.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.o
+.PHONY : infPipes.c.o
 
-src/alarma.i: src/alarma.c.i
-.PHONY : src/alarma.i
+infPipes.i: infPipes.c.i
+.PHONY : infPipes.i
 
 # target to preprocess a source file
-src/alarma.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/alarma.c.i
-.PHONY : src/alarma.c.i
+infPipes.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.i
+.PHONY : infPipes.c.i
 
-src/alarma.s: src/alarma.c.s
-.PHONY : src/alarma.s
+infPipes.s: infPipes.c.s
+.PHONY : infPipes.s
 
 # target to generate assembly for a file
-src/alarma.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/alarma.c.s
-.PHONY : src/alarma.c.s
+infPipes.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/infPipes.c.s
+.PHONY : infPipes.c.s
 
-src/ejecutarComandos.o: src/ejecutarComandos.c.o
-.PHONY : src/ejecutarComandos.o
+main.o: main.c.o
+.PHONY : main.o
 
 # target to build an object file
-src/ejecutarComandos.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/ejecutarComandos.c.o
-.PHONY : src/ejecutarComandos.c.o
+main.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/main.c.o
+.PHONY : main.c.o
 
-src/ejecutarComandos.i: src/ejecutarComandos.c.i
-.PHONY : src/ejecutarComandos.i
+main.i: main.c.i
+.PHONY : main.i
 
 # target to preprocess a source file
-src/ejecutarComandos.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/ejecutarComandos.c.i
-.PHONY : src/ejecutarComandos.c.i
+main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/main.c.i
+.PHONY : main.c.i
 
-src/ejecutarComandos.s: src/ejecutarComandos.c.s
-.PHONY : src/ejecutarComandos.s
+main.s: main.c.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-src/ejecutarComandos.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/ejecutarComandos.c.s
-.PHONY : src/ejecutarComandos.c.s
+main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/main.c.s
+.PHONY : main.c.s
 
-src/favs.o: src/favs.c.o
-.PHONY : src/favs.o
+shell.o: shell.c.o
+.PHONY : shell.o
 
 # target to build an object file
-src/favs.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/favs.c.o
-.PHONY : src/favs.c.o
+shell.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/shell.c.o
+.PHONY : shell.c.o
 
-src/favs.i: src/favs.c.i
-.PHONY : src/favs.i
-
-# target to preprocess a source file
-src/favs.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/favs.c.i
-.PHONY : src/favs.c.i
-
-src/favs.s: src/favs.c.s
-.PHONY : src/favs.s
-
-# target to generate assembly for a file
-src/favs.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/favs.c.s
-.PHONY : src/favs.c.s
-
-src/main.o: src/main.c.o
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/main.c.o
-.PHONY : src/main.c.o
-
-src/main.i: src/main.c.i
-.PHONY : src/main.i
+shell.i: shell.c.i
+.PHONY : shell.i
 
 # target to preprocess a source file
-src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/main.c.i
-.PHONY : src/main.c.i
+shell.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/shell.c.i
+.PHONY : shell.c.i
 
-src/main.s: src/main.c.s
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/main.c.s
-.PHONY : src/main.c.s
-
-src/tokenEspacios.o: src/tokenEspacios.c.o
-.PHONY : src/tokenEspacios.o
-
-# target to build an object file
-src/tokenEspacios.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenEspacios.c.o
-.PHONY : src/tokenEspacios.c.o
-
-src/tokenEspacios.i: src/tokenEspacios.c.i
-.PHONY : src/tokenEspacios.i
-
-# target to preprocess a source file
-src/tokenEspacios.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenEspacios.c.i
-.PHONY : src/tokenEspacios.c.i
-
-src/tokenEspacios.s: src/tokenEspacios.c.s
-.PHONY : src/tokenEspacios.s
+shell.s: shell.c.s
+.PHONY : shell.s
 
 # target to generate assembly for a file
-src/tokenEspacios.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenEspacios.c.s
-.PHONY : src/tokenEspacios.c.s
-
-src/tokenPipes.o: src/tokenPipes.c.o
-.PHONY : src/tokenPipes.o
-
-# target to build an object file
-src/tokenPipes.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenPipes.c.o
-.PHONY : src/tokenPipes.c.o
-
-src/tokenPipes.i: src/tokenPipes.c.i
-.PHONY : src/tokenPipes.i
-
-# target to preprocess a source file
-src/tokenPipes.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenPipes.c.i
-.PHONY : src/tokenPipes.c.i
-
-src/tokenPipes.s: src/tokenPipes.c.s
-.PHONY : src/tokenPipes.s
-
-# target to generate assembly for a file
-src/tokenPipes.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/tokenPipes.c.s
-.PHONY : src/tokenPipes.c.s
+shell.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/shell.c.s
+.PHONY : shell.c.s
 
 # Help Target
 help:
@@ -282,24 +210,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... shell"
-	@echo "... src/alarma.o"
-	@echo "... src/alarma.i"
-	@echo "... src/alarma.s"
-	@echo "... src/ejecutarComandos.o"
-	@echo "... src/ejecutarComandos.i"
-	@echo "... src/ejecutarComandos.s"
-	@echo "... src/favs.o"
-	@echo "... src/favs.i"
-	@echo "... src/favs.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
-	@echo "... src/tokenEspacios.o"
-	@echo "... src/tokenEspacios.i"
-	@echo "... src/tokenEspacios.s"
-	@echo "... src/tokenPipes.o"
-	@echo "... src/tokenPipes.i"
-	@echo "... src/tokenPipes.s"
+	@echo "... infPipes.o"
+	@echo "... infPipes.i"
+	@echo "... infPipes.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... shell.o"
+	@echo "... shell.i"
+	@echo "... shell.s"
 .PHONY : help
 
 

@@ -2,3 +2,4 @@
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
 -- Build files have been written to: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug
+CMake File API: /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug: failed to load from '/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-6f09b5e0c11ae8d3885a.json'
