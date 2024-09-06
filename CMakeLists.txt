@@ -9,5 +9,9 @@ add_executable(shell
         src/ejecutarComandos.c
         src/tokenPipes.c
         src/alarma.c
+        src/favs.c
+        src/tokenPipes.h
+        src/alarma.h
+        src/ejecutarComandos.h
 )
 

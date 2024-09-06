@@ -36,9 +36,8 @@ void manejoAlarma(char **args){
 		if (*finalCadena != '\0' || segundos <= 0) {
 			printf("Error: El argumento no es un número válido.\n");
 			free(mensaje);
-	    }
-	    else{
-    		setAlarma(segundos, mensaje);
+	    }else{
+			setAlarma(segundos, mensaje);
 	        free(mensaje);
 	    }
     }

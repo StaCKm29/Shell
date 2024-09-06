@@ -33,4 +33,7 @@ CMakeFiles/shell.dir/src/main.c.o: \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/bits/stdlib-float.h /usr/include/string.h \
  /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
- /usr/include/strings.h
+ /usr/include/strings.h \
+ /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/favs.h \
+ /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenPipes.h \
+ /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/ejecutarComandos.h

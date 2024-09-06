@@ -1,5 +1,5 @@
-CMakeFiles/shell.dir/src/ejecutarComandos.c.o: \
- /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/ejecutarComandos.c \
+CMakeFiles/shell.dir/src/favs.c.o: \
+ /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/favs.c \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/bits/libc-header-start.h /usr/include/features.h \
  /usr/include/features-time64.h /usr/include/bits/wordsize.h \
@@ -31,11 +31,7 @@ CMakeFiles/shell.dir/src/ejecutarComandos.c.o: \
  /usr/include/bits/pthreadtypes-arch.h \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/bits/stdlib-float.h /usr/include/unistd.h \
- /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
- /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
- /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
- /usr/include/sys/wait.h /usr/include/signal.h \
+ /usr/include/bits/stdlib-float.h /usr/include/signal.h \
  /usr/include/bits/signum-generic.h /usr/include/bits/signum-arch.h \
  /usr/include/bits/types/sig_atomic_t.h \
  /usr/include/bits/types/siginfo_t.h /usr/include/bits/types/__sigval_t.h \
@@ -46,9 +42,11 @@ CMakeFiles/shell.dir/src/ejecutarComandos.c.o: \
  /usr/include/sys/ucontext.h /usr/include/bits/sigstack.h \
  /usr/include/bits/sigstksz.h /usr/include/bits/ss_flags.h \
  /usr/include/bits/types/struct_sigstack.h /usr/include/bits/sigthread.h \
- /usr/include/bits/signal_ext.h /usr/include/bits/types/idtype_t.h \
- /usr/include/string.h /usr/include/bits/types/locale_t.h \
- /usr/include/bits/types/__locale_t.h /usr/include/strings.h \
- /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/favs.h \
- /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/alarma.h \
+ /usr/include/bits/signal_ext.h /usr/include/string.h \
+ /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
+ /usr/include/strings.h /usr/include/unistd.h \
+ /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
+ /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
+ /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
+ /usr/include/sys/wait.h /usr/include/bits/types/idtype_t.h \
  /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenEspacios.h

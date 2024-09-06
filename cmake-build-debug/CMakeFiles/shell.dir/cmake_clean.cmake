@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/shell.dir/src/alarma.c.o.d"
   "CMakeFiles/shell.dir/src/ejecutarComandos.c.o"
   "CMakeFiles/shell.dir/src/ejecutarComandos.c.o.d"
+  "CMakeFiles/shell.dir/src/favs.c.o"
+  "CMakeFiles/shell.dir/src/favs.c.o.d"
   "CMakeFiles/shell.dir/src/main.c.o"
   "CMakeFiles/shell.dir/src/main.c.o.d"
   "CMakeFiles/shell.dir/src/tokenEspacios.c.o"

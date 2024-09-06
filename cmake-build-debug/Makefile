@@ -177,6 +177,30 @@ src/ejecutarComandos.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/ejecutarComandos.c.s
 .PHONY : src/ejecutarComandos.c.s
 
+src/favs.o: src/favs.c.o
+.PHONY : src/favs.o
+
+# target to build an object file
+src/favs.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/favs.c.o
+.PHONY : src/favs.c.o
+
+src/favs.i: src/favs.c.i
+.PHONY : src/favs.i
+
+# target to preprocess a source file
+src/favs.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/favs.c.i
+.PHONY : src/favs.c.i
+
+src/favs.s: src/favs.c.s
+.PHONY : src/favs.s
+
+# target to generate assembly for a file
+src/favs.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/shell.dir/build.make CMakeFiles/shell.dir/src/favs.c.s
+.PHONY : src/favs.c.s
+
 src/main.o: src/main.c.o
 .PHONY : src/main.o
 
@@ -264,6 +288,9 @@ help:
 	@echo "... src/ejecutarComandos.o"
 	@echo "... src/ejecutarComandos.i"
 	@echo "... src/ejecutarComandos.s"
+	@echo "... src/favs.o"
+	@echo "... src/favs.i"
+	@echo "... src/favs.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
