@@ -51,11 +51,15 @@
 			[
 				0,
 <<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-488711f96181564d6ca4.json
+<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-488711f96181564d6ca4.json
 				1
 ========
 				1,
 				2
 >>>>>>>> stack29:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-a2a50d401c64b7fc99db.json
+========
+				1
+>>>>>>>> 23904fd (Error):cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-2fb93fbdd8b265bbf2ae.json
 			]
 		}
 	],
@@ -90,11 +94,15 @@
 			[
 				0,
 <<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-488711f96181564d6ca4.json
+<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-488711f96181564d6ca4.json
 				1
 ========
 				1,
 				2
 >>>>>>>> stack29:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-a2a50d401c64b7fc99db.json
+========
+				1
+>>>>>>>> 23904fd (Error):cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-2fb93fbdd8b265bbf2ae.json
 			]
 		}
 	],
@@ -109,6 +117,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
+<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-488711f96181564d6ca4.json
 			"path" : "shell.c",
 			"sourceGroupIndex" : 0
 <<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-488711f96181564d6ca4.json
@@ -120,6 +129,10 @@
 			"path" : "infPipes.c",
 			"sourceGroupIndex" : 0
 >>>>>>>> stack29:cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-a2a50d401c64b7fc99db.json
+========
+			"path" : "Shell.c",
+			"sourceGroupIndex" : 0
+>>>>>>>> 23904fd (Error):cmake-build-debug/.cmake/api/v1/reply/target-shell-Debug-2fb93fbdd8b265bbf2ae.json
 		}
 	],
 	"type" : "EXECUTABLE"
