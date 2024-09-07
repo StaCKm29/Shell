@@ -62,7 +62,7 @@ favs eliminar 1,2
 ```
 Esto borraria los comandos 1 y 2 de la lista de comandos favoritos visto del favs mostrar
 
-`favs buscar  [substring]` : Busca comandos en la lista de favoritos que contengan la subcadena proporcionada en el argumento
+`favs buscar [substring]` : Busca comandos en la lista de favoritos que contengan la subcadena proporcionada en el argumento
 ```sh
 favs buscar ls  
 ```
