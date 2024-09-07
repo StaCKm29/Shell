@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include <ctype.h>
+#include "tokenEspacios.h"
 
 typedef struct
 {
@@ -14,9 +15,9 @@ typedef struct
     char ruta_archivo[1024];
 } favs;
 
-char **extraerComandos(char *input, int index);
 void iniciarFavs(favs *favs);
 void crearArchivo(favs *favs, char *ruta);
+void crearRutaDeArchivoAlSalir(char *ruta, char *ruta_a_guardar);
 void agregarComando(favs *favs, char **comando);
 void mostrarComandos(char *ruta);
 void mostrarComandosPrintf(favs *favs);
@@ -30,39 +31,6 @@ void freeFavs(favs *favs);
 void guardarComandos(favs *favs);
 void elegirFavs(favs *favs, char **comando);
 
-// Extrae el comando del input
-char **extraerComandos(char *input, int index)
-{
-    int i = index, tamaño_buf = 64;
-    char *token = strtok(input, " ");
-
-    char **comandos = malloc(tamaño_buf * sizeof(char *));
-    if (!comandos)
-    {
-        printf("Error en memoria");
-        exit(1);
-    }
-
-    while (token != NULL)
-    {
-        comandos[i] = token;
-        i++;
-
-        if (i >= tamaño_buf)
-        {
-            tamaño_buf += 64;
-            comandos = realloc(comandos, tamaño_buf * sizeof(char *));
-            if (!comandos)
-            {
-                printf("Error en redimensionar memoria");
-                exit(1);
-            }
-        }
-        token = strtok(NULL, " ");
-    }
-    comandos[i] = NULL;
-    return comandos;
-}
 // Inicializo la estructura de datos
 void iniciarFavs(favs *favs)
 {
@@ -435,7 +403,7 @@ void cargarComando(favs *favs)
 
         if (comando_str != NULL)
         {
-            char **comando = extraerComandos(comando_str, 0);
+            char **comando = tokenEspacios(comando_str);
 
             // Verificar si se extrajo un comando válido
             if (comando[0] != NULL)
@@ -602,119 +570,119 @@ void elegirFavs(favs *favs, char **comando)
     }
 }
 
-int main()
-{
-    favs misFavoritos;
-    iniciarFavs(&misFavoritos);
+// int main()
+// {
+//     favs misFavoritos;
+//     iniciarFavs(&misFavoritos);
 
-    int tamaño_buf = 1024;
-    int tamaño_actual = tamaño_buf;
+//     int tamaño_buf = 1024;
+//     int tamaño_actual = tamaño_buf;
 
-    char *input = malloc(tamaño_buf * sizeof(char));
-    if (!input)
-    {
-        printf("Error en memoria");
-        exit(1);
-    }
+//     char *input = malloc(tamaño_buf * sizeof(char));
+//     if (!input)
+//     {
+//         printf("Error en memoria");
+//         exit(1);
+//     }
 
-    int l = 0, c;
-    char ruta[1024];
+//     int l = 0, c;
+//     char ruta[1024];
 
-    while (1)
-    {
-        if (getcwd(ruta, sizeof(ruta)) == NULL)
-        {
-            printf("Error en cwd");
-            free(input);
-            exit(1);
-        }
+//     while (1)
+//     {
+//         if (getcwd(ruta, sizeof(ruta)) == NULL)
+//         {
+//             printf("Error en cwd");
+//             free(input);
+//             exit(1);
+//         }
 
-        printf("\033[1;37mOhMyShell 👾 %s \033[0m", ruta); // Imprimir un prompt
+//         printf("\033[1;37mOhMyShell 👾 %s \033[0m", ruta); // Imprimir un prompt
 
-        l = 0;
-        while ((c = fgetc(stdin)) != '\n' && c != EOF)
-        {
-            input[l++] = (char)c;
-            if (l == tamaño_actual)
-            {
-                tamaño_actual += tamaño_buf;
-                char *temp = realloc(input, tamaño_actual * sizeof(char));
-                if (!temp)
-                {
-                    printf("Error en memoria");
-                    free(input);
-                    exit(1);
-                }
-                input = temp;
-            }
-        }
-        input[l] = '\0';
+//         l = 0;
+//         while ((c = fgetc(stdin)) != '\n' && c != EOF)
+//         {
+//             input[l++] = (char)c;
+//             if (l == tamaño_actual)
+//             {
+//                 tamaño_actual += tamaño_buf;
+//                 char *temp = realloc(input, tamaño_actual * sizeof(char));
+//                 if (!temp)
+//                 {
+//                     printf("Error en memoria");
+//                     free(input);
+//                     exit(1);
+//                 }
+//                 input = temp;
+//             }
+//         }
+//         input[l] = '\0';
 
-        // Si el usuario ingresa "exit", salir del programa
-        if (strcmp(input, "exit") == 0)
-        {
-            if (strcmp(misFavoritos.ruta_archivo, "") != 0)
-            {
-                char ruta_estandar[1024];
-                char *nombreArchivo = "/ruta.txt";
-                char *rutaHome = getenv("HOME");
-                snprintf(ruta_estandar, sizeof(ruta_estandar), "%s%s", rutaHome, nombreArchivo);
-                crearRutaDeArchivoAlSalir(ruta_estandar, misFavoritos.ruta_archivo);
-            }
-            break;
-        }
+//         // Si el usuario ingresa "exit", salir del programa
+//         if (strcmp(input, "exit") == 0)
+//         {
+//             if (strcmp(misFavoritos.ruta_archivo, "") != 0)
+//             {
+//                 char ruta_estandar[1024];
+//                 char *nombreArchivo = "/ruta.txt";
+//                 char *rutaHome = getenv("HOME");
+//                 snprintf(ruta_estandar, sizeof(ruta_estandar), "%s%s", rutaHome, nombreArchivo);
+//                 crearRutaDeArchivoAlSalir(ruta_estandar, misFavoritos.ruta_archivo);
+//             }
+//             break;
+//         }
 
-        // Si el usuario presiona enter sin ingresar nada, continuar
-        if (strlen(input) == 0)
-        {
-            continue;
-        }
+//         // Si el usuario presiona enter sin ingresar nada, continuar
+//         if (strlen(input) == 0)
+//         {
+//             continue;
+//         }
 
-        char **comandos = extraerComandos(input, 0);
+//         char **comandos = extraerComandos(input, 0);
 
-        // El padre debe ejecutar el comando cd.
-        if (strcmp(comandos[0], "cd") == 0)
-        {
-            if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0)
-            {
-                char *args[] = {"cd", NULL};
-                agregarComando(&misFavoritos, args);
-                chdir(getenv("HOME"));
-            }
-            else
-            {
-                if (chdir(comandos[1]) != 0)
-                {
-                    perror("Error cambiando el directorio");
-                }
-            }
-            char *args[] = {"cd", NULL};
-            agregarComando(&misFavoritos, args);
-        }
-        else if (strcmp(comandos[0], "favs") == 0)
-        {
-            elegirFavs(&misFavoritos, comandos);
-        }
-        else
-        {
-            if (fork() == 0)
-            { // Proceso hijo
-                execvp(comandos[0], comandos);
-                perror("Error ejecutando el comando");
-                exit(1);
-            }
-            else
-            {
-                wait(NULL);
-                agregarComando(&misFavoritos, comandos);
-            }
-        }
+//         // El padre debe ejecutar el comando cd.
+//         if (strcmp(comandos[0], "cd") == 0)
+//         {
+//             if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0)
+//             {
+//                 char *args[] = {"cd", NULL};
+//                 agregarComando(&misFavoritos, args);
+//                 chdir(getenv("HOME"));
+//             }
+//             else
+//             {
+//                 if (chdir(comandos[1]) != 0)
+//                 {
+//                     perror("Error cambiando el directorio");
+//                 }
+//             }
+//             char *args[] = {"cd", NULL};
+//             agregarComando(&misFavoritos, args);
+//         }
+//         else if (strcmp(comandos[0], "favs") == 0)
+//         {
+//             elegirFavs(&misFavoritos, comandos);
+//         }
+//         else
+//         {
+//             if (fork() == 0)
+//             { // Proceso hijo
+//                 execvp(comandos[0], comandos);
+//                 perror("Error ejecutando el comando");
+//                 exit(1);
+//             }
+//             else
+//             {
+//                 wait(NULL);
+//                 agregarComando(&misFavoritos, comandos);
+//             }
+//         }
 
-        free(comandos);
-    }
+//         free(comandos);
+//     }
 
-    // Liberar memoria y salir
-    freeFavs(&misFavoritos);
-    free(input);
-    return 0;
-}
+//     // Liberar memoria y salir
+//     freeFavs(&misFavoritos);
+//     free(input);
+//     return 0;
+// }
