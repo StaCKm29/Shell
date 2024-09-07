@@ -4,7 +4,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include <ctype.h>
 #include "tokenEspacios.h"
 
 typedef struct
@@ -16,8 +15,8 @@ typedef struct
 } favs;
 
 void iniciarFavs(favs *favs);
-void crearArchivo(favs *favs, char *ruta);
 void crearRutaDeArchivoAlSalir(char *ruta, char *ruta_a_guardar);
+void crearArchivo(favs *favs, char *ruta);
 void agregarComando(favs *favs, char **comando);
 void mostrarComandos(char *ruta);
 void mostrarComandosPrintf(favs *favs);
