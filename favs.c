@@ -29,9 +29,8 @@ int verificarComandoEjecutable(char **comando);
 void freeFavs(favs *favs);
 void guardarComandos(favs *favs);
 void elegirFavs(favs *favs, char **comando);
-int esNumerico(char *str);
-int contador_caracteres(char *linea, char limite);
 
+// Extrae el comando del input
 char **extraerComandos(char *input, int index)
 {
     int i = index, tamaño_buf = 64;
@@ -64,7 +63,6 @@ char **extraerComandos(char *input, int index)
     comandos[i] = NULL;
     return comandos;
 }
-
 // Inicializo la estructura de datos
 void iniciarFavs(favs *favs)
 {
@@ -455,28 +453,6 @@ void cargarComando(favs *favs)
     printf("Comandos cargados correctamente desde %s\n", ruta);
 }
 
-// Devuelve si un string contiene numeros
-int esNumerico(char *str)
-{
-    for (int i = 0; str[i] != '\0'; i++)
-    {
-        if (!isdigit(str[i]))
-        {
-            return 0; // No es numérico
-        }
-    }
-    return 1; // Es numérico
-}
-// Cuenta los caracteres hasta un limite
-int contador_caracteres(char *linea, char limite)
-{
-    int index = 0;
-    while (linea[index] != '\0' && linea[index] != limite)
-    {
-        index++;
-    }
-    return index;
-}
 // Verifica que un comando sea ejecutable
 int verificarComandoEjecutable(char **comando)
 {
@@ -566,6 +542,7 @@ void elegirFavs(favs *favs, char **comando)
             if (sscanf(comando[2], "%d,%d", &num1, &num2) == 2)
             {
                 eliminarComando(favs, num1, num2);
+                guardarComandos(favs);
             }
             else
             {
