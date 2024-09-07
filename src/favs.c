@@ -4,6 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <ctype.h>
 
 typedef struct
 {
@@ -13,6 +14,7 @@ typedef struct
     char ruta_archivo[1024];
 } favs;
 
+char **extraerComandos(char *input, int index);
 void iniciarFavs(favs *favs);
 void crearArchivo(favs *favs, char *ruta);
 void agregarComando(favs *favs, char **comando);
@@ -22,18 +24,52 @@ void eliminarComando(favs *favs, int num1, int num2);
 void borrarComandos(char *ruta);
 void buscarComandos(favs *favs, const char *sstring);
 void ejecutarComando(favs *favs, int num);
-void cargarComando(favs *favs, char *ruta);
+void cargarComando(favs *favs);
+int verificarComandoEjecutable(char **comando);
 void freeFavs(favs *favs);
 void guardarComandos(favs *favs);
 void elegirFavs(favs *favs, char **comando);
 
+// Extrae el comando del input
+char **extraerComandos(char *input, int index)
+{
+    int i = index, tamaño_buf = 64;
+    char *token = strtok(input, " ");
+
+    char **comandos = malloc(tamaño_buf * sizeof(char *));
+    if (!comandos)
+    {
+        printf("Error en memoria");
+        exit(1);
+    }
+
+    while (token != NULL)
+    {
+        comandos[i] = token;
+        i++;
+
+        if (i >= tamaño_buf)
+        {
+            tamaño_buf += 64;
+            comandos = realloc(comandos, tamaño_buf * sizeof(char *));
+            if (!comandos)
+            {
+                printf("Error en redimensionar memoria");
+                exit(1);
+            }
+        }
+        token = strtok(NULL, " ");
+    }
+    comandos[i] = NULL;
+    return comandos;
+}
 // Inicializo la estructura de datos
 void iniciarFavs(favs *favs)
 {
     favs->comandos = malloc(10 * sizeof(char **));
     favs->tamaño = 0;
     favs->capacidad = 10;
-    favs->ruta_archivo[0] = '\0';
+    strcpy(favs->ruta_archivo, "");
 }
 // Creacion del archivo txt
 void crearArchivo(favs *favs, char *ruta)
@@ -57,24 +93,29 @@ void crearArchivo(favs *favs, char *ruta)
         fprintf(archivo, "\n"); // Nueva línea para separar comandos
     }
     fclose(archivo);
-    printf("comandos guardados\n");
+    printf("Archivo creado\n");
 }
-
-void crearArchivoAlSalir(char *ruta)
+// Crea el archivo ruta txt en direccion HOME
+void crearRutaDeArchivoAlSalir(char *ruta, char *ruta_a_guardar)
 {
     FILE *archivo = fopen(ruta, "w");
     if (archivo == NULL)
     {
-        perror("Error al abrir el archivo");
+        perror("Error al abrir el archivo\n");
         return;
     }
 
-    fprintf(archivo, "%s", ruta);
+    fprintf(archivo, "%s\n", ruta_a_guardar);
     fclose(archivo);
 }
-
 // Agregar un comando a la lista de favoritos (Recordar no agregar los comandos relacionados con favs)
-void agregarComando(favs *favs, char **comando) {
+void agregarComando(favs *favs, char **comando)
+{
+
+    if (verificarComandoEjecutable(comando))
+    {
+        return;
+    }
 
     // Aseguro que no se agregue comando favs,
     if (strcmp(comando[0], "favs") == 0)
@@ -270,7 +311,7 @@ void buscarComandos(favs *favs, const char *sstring)
         {
             if (strstr(favs->comandos[i][j], sstring) != NULL)
             {
-                printf("Comando #%d: %s ", i + 1, favs->comandos[i][j]);
+                printf("Comando %d: %s ", i + 1, favs->comandos[i][j]);
                 printf("\n");
                 encontrados++;
                 break; // Salir del bucle interno si ya encontramos una coincidencia
@@ -283,7 +324,7 @@ void buscarComandos(favs *favs, const char *sstring)
         printf("No se encontraron comandos que contengan '%s'.\n", sstring);
     }
 }
-
+// Ejecuta los comandos del txt
 void ejecutarComando(favs *favs, int num)
 {
     if (num < 1 || num > favs->tamaño)
@@ -295,6 +336,22 @@ void ejecutarComando(favs *favs, int num)
     // Solo tomar el comando principal
     char *comando = favs->comandos[num - 1][0];
     char *args[] = {comando, NULL};
+
+    if (strcmp(comando, "cd") == 0)
+    {
+        if (favs->comandos[num - 1][1] == NULL || strcmp(favs->comandos[num - 1][1], "~") == 0)
+        {
+            chdir(getenv("HOME"));
+            return;
+        }
+        else
+        {
+            if (chdir(favs->comandos[num - 1][1]) != 0)
+            {
+                perror("Error cambiando el directorio");
+            }
+        }
+    }
 
     pid_t pid = fork();
     if (pid == 0)
@@ -313,52 +370,103 @@ void ejecutarComando(favs *favs, int num)
     }
 }
 
-// Despliega los comandos del archivo y los devuelve a la memoria
-void cargarComando(favs *favs, char *ruta)
+// Devuelve la ruta del archivo txt en ruta estandar
+char *leerRutaDeArchivo(char *ruta)
 {
+    FILE *archivo;
+    static char rutaGuardada[1024]; // Variable para almacenar la ruta leída
+
+    archivo = fopen(ruta, "r");
+    if (archivo == NULL)
+    {
+        perror("Error al abrir el archivo\n");
+        return NULL;
+    }
+
+    // Leer la primera línea del archivo
+    if (fgets(rutaGuardada, sizeof(rutaGuardada), archivo) != NULL)
+    {
+        // Eliminar el salto de línea al final si existe
+        rutaGuardada[strcspn(rutaGuardada, "\n")] = '\0';
+    }
+    else
+    {
+        printf("Error al leer la ruta desde el archivo.\n");
+        fclose(archivo);
+        return NULL;
+    }
+
+    fclose(archivo);
+    return rutaGuardada;
+}
+
+// Despliega los comandos del archivo y los devuelve a la memoria
+void cargarComando(favs *favs)
+{
+    // Ruta por defecto
+    char ruta_estandar[1024];
+    char *nombreArchivo = "/ruta.txt";
+    char *rutaHome = getenv("HOME");
+    snprintf(ruta_estandar, sizeof(ruta_estandar), "%s%s", rutaHome, nombreArchivo);
+
+    // Leer la ruta del archivo desde el archivo de configuración
+    char *ruta = leerRutaDeArchivo(ruta_estandar);
+    if (ruta == NULL)
+    {
+        printf("Error: No se pudo leer la ruta del archivo de comandos.\n");
+        return;
+    }
+
     FILE *archivo = fopen(ruta, "r");
     if (archivo == NULL)
     {
-        printf("Error en abrir el archivo");
+        printf("Error: No se pudo abrir el archivo de comandos: %s\n", ruta);
         return;
     }
 
     char linea[1024];
-
-    // Leer linea por linea
-    while (fgets(linea, sizeof(linea), archivo))
+    while (fgets(linea, sizeof(linea), archivo) != NULL)
     {
-        // Eliminar salto de linea al final
+        // Eliminar el salto de línea al final, si lo tiene
         linea[strcspn(linea, "\n")] = 0;
 
-        // Contar cantidad de argumentos
-        int num_args = 0;
-        char *temp = strdup(linea);
-        char *token = strtok(temp, " ");
-        while (token != NULL)
-        {
-            num_args++;
-            token = strtok(NULL, " ");
-        }
-        free(temp);
+        // Extraer el índice (número de comando) y el comando
+        char *comando_str = strchr(linea, '-') + 1; // Buscar el delimitador '-' y avanzar
 
-        char **comando = malloc((num_args + 1) * sizeof(char *));
-        int i = 0;
-        token = strtok(linea, " ");
-        while (token != NULL)
+        if (comando_str != NULL)
         {
-            comando[i] = strdup(token);
-            i++;
-            token = strtok(NULL, " ");
-        }
-        comando[i] = NULL;
+            char **comando = extraerComandos(comando_str, 0);
 
-        agregarComando(favs, comando);
+            // Verificar si se extrajo un comando válido
+            if (comando[0] != NULL)
+            {
+                // Agregar el comando a la estructura favs
+                agregarComando(favs, comando);
+            }
+        }
     }
+
+    // Copiar la ruta del archivo a la estructura favs
+    strcpy(favs->ruta_archivo, ruta);
     fclose(archivo);
-    printf("comandos cargados correctamente en %s\n", ruta);
+
+    printf("Comandos cargados correctamente desde %s\n", ruta);
 }
 
+// Verifica que un comando sea ejecutable
+int verificarComandoEjecutable(char **comando)
+{
+    // Busca en el PATH si el comando es accesible
+    if (access(comando[0], X_OK) == 0)
+    {
+        return 1; // El comando es accesible y ejecutable
+    }
+    else
+    {
+        return 0; // No es accesible o no es ejecutable
+    }
+}
+// Libera la memoria
 void freeFavs(favs *favs)
 {
     // Liberar cada comando
@@ -375,7 +483,7 @@ void freeFavs(favs *favs)
     // Liberar la lista de comandos
     free(favs->comandos);
 }
-
+// Guarda los comandos en el archivo txt
 void guardarComandos(favs *favs)
 {
     // Abre el archivo en modo de escritura
@@ -402,12 +510,16 @@ void guardarComandos(favs *favs)
 }
 
 // funcion switch para elegir que funcion usar mediante el cmd
-void elegirFavs(favs *favs, char **comando){
-    if (comando[1] == NULL) {
-        printf("Error: Se requiere un subcomando para 'favs'.\n");
+void elegirFavs(favs *favs, char **comando)
+{
+    if (comando[1] == NULL)
+    {
+        printf("No se reconoce el comando favs\n");
         return;
     }
-    if (strcmp(comando[1], "crear") == 0){
+
+    if (strcmp(comando[1], "crear") == 0)
+    {
         if (comando[2] != NULL)
         {
             strcpy(favs->ruta_archivo, comando[2]);
@@ -430,6 +542,7 @@ void elegirFavs(favs *favs, char **comando){
             if (sscanf(comando[2], "%d,%d", &num1, &num2) == 2)
             {
                 eliminarComando(favs, num1, num2);
+                guardarComandos(favs);
             }
             else
             {
@@ -459,12 +572,16 @@ void elegirFavs(favs *favs, char **comando){
     }
     else if (strcmp(comando[1], "cargar") == 0)
     {
-        cargarComando(favs, favs->ruta_archivo);
+        cargarComando(favs);
         mostrarComandosPrintf(favs); // Mostrar los comandos cargados en la memoria
     }
     else if (strcmp(comando[1], "guardar") == 0)
     {
         guardarComandos(favs);
+    }
+    else if (strcmp(comando[1], "terminal") == 0)
+    { // ELIMINAR DESPUES
+        mostrarComandosPrintf(favs);
     }
     else if (strcmp(comando[2], "ejecutar") == 0)
     {
@@ -478,8 +595,126 @@ void elegirFavs(favs *favs, char **comando){
             printf("Error: Debes proporcionar el número del comando a ejecutar.\n");
         }
     }
+
     else
     {
         printf("Error: Comando de favs no reconocido.\n");
     }
+}
+
+int main()
+{
+    favs misFavoritos;
+    iniciarFavs(&misFavoritos);
+
+    int tamaño_buf = 1024;
+    int tamaño_actual = tamaño_buf;
+
+    char *input = malloc(tamaño_buf * sizeof(char));
+    if (!input)
+    {
+        printf("Error en memoria");
+        exit(1);
+    }
+
+    int l = 0, c;
+    char ruta[1024];
+
+    while (1)
+    {
+        if (getcwd(ruta, sizeof(ruta)) == NULL)
+        {
+            printf("Error en cwd");
+            free(input);
+            exit(1);
+        }
+
+        printf("\033[1;37mOhMyShell 👾 %s \033[0m", ruta); // Imprimir un prompt
+
+        l = 0;
+        while ((c = fgetc(stdin)) != '\n' && c != EOF)
+        {
+            input[l++] = (char)c;
+            if (l == tamaño_actual)
+            {
+                tamaño_actual += tamaño_buf;
+                char *temp = realloc(input, tamaño_actual * sizeof(char));
+                if (!temp)
+                {
+                    printf("Error en memoria");
+                    free(input);
+                    exit(1);
+                }
+                input = temp;
+            }
+        }
+        input[l] = '\0';
+
+        // Si el usuario ingresa "exit", salir del programa
+        if (strcmp(input, "exit") == 0)
+        {
+            if (strcmp(misFavoritos.ruta_archivo, "") != 0)
+            {
+                char ruta_estandar[1024];
+                char *nombreArchivo = "/ruta.txt";
+                char *rutaHome = getenv("HOME");
+                snprintf(ruta_estandar, sizeof(ruta_estandar), "%s%s", rutaHome, nombreArchivo);
+                crearRutaDeArchivoAlSalir(ruta_estandar, misFavoritos.ruta_archivo);
+            }
+            break;
+        }
+
+        // Si el usuario presiona enter sin ingresar nada, continuar
+        if (strlen(input) == 0)
+        {
+            continue;
+        }
+
+        char **comandos = extraerComandos(input, 0);
+
+        // El padre debe ejecutar el comando cd.
+        if (strcmp(comandos[0], "cd") == 0)
+        {
+            if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0)
+            {
+                char *args[] = {"cd", NULL};
+                agregarComando(&misFavoritos, args);
+                chdir(getenv("HOME"));
+            }
+            else
+            {
+                if (chdir(comandos[1]) != 0)
+                {
+                    perror("Error cambiando el directorio");
+                }
+            }
+            char *args[] = {"cd", NULL};
+            agregarComando(&misFavoritos, args);
+        }
+        else if (strcmp(comandos[0], "favs") == 0)
+        {
+            elegirFavs(&misFavoritos, comandos);
+        }
+        else
+        {
+            if (fork() == 0)
+            { // Proceso hijo
+                execvp(comandos[0], comandos);
+                perror("Error ejecutando el comando");
+                exit(1);
+            }
+            else
+            {
+                wait(NULL);
+                agregarComando(&misFavoritos, comandos);
+            }
+        }
+
+        free(comandos);
+    }
+
+    // Liberar memoria y salir
+    freeFavs(&misFavoritos);
+    free(input);
+    return 0;
 }
