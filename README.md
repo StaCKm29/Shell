@@ -5,16 +5,14 @@
 Para compilar y ejecutar el proyecto se debe ingresar el siguiente comando en la terminal (estando en la carpeta src):
 
 ```sh
-gcc main.c ejecutarComandos.c tokenEspacios.c tokenPipes.c alarma.c -o shell
-```
-Una vez compilado, podemos ejecutar la shell con el siguiente comando:
-```sh
+make
 ./shell
 ```
 
+
 Una vez aquí, aparecerá el promt de la shell
 ```sh
-OhMyShell:~/home/lugar/del/directorio/Shell/cmake-build-debug 👾 
+OhMyShell:~/home/lugar/del/directorio/Shell/src 👾 
 ```
 Por lo que estará lista y esperando para recibir comandos
 ### Comandos:
@@ -71,6 +69,13 @@ esto buscará y mostrará los comandos favortios que contengan ls
 
 `favs borrar` :  Borra todos los comandos favoritos almacenados en el archivo de comandos y vacía la lista de comandos en memoria.
 
+### Limpieza carpeta src (opcional):
+Para limpiar la carpeta src de los archivos generados por el comando make, se debe ingresar el siguiente comando en la terminal (estando en la carpeta src):
+
+```sh
+make clean
+```
+
 <h3 align="left">Herramientas utilizadas: </h3>
 <p align="left"> 
   <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer">
@@ -79,4 +84,7 @@ esto buscará y mostrará los comandos favortios que contengan ls
   <a href="https://valgrind.org/" target="_blank" rel="noreferrer"> 
     <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Valgrind_logo.png/200px-Valgrind_logo.png" alt="Valgrind" width="40" height="40"/> 
   </a> 
+    <a href="https://www.gnu.org/software/make/" target="_blank" rel="noreferrer"> 
+        <img src="https://static1.makeuseofimages.com/wordpress/wp-content/uploads/2023/05/the-popular-makefile-logo.jpg" alt="Make" width="60" height="40"/>
+    </a>
 </p>
