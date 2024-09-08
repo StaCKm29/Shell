@@ -1,0 +1,3 @@
+/home/xai/Programacion/Shell/build/CMakeFiles/shell.dir
+/home/xai/Programacion/Shell/build/CMakeFiles/edit_cache.dir
+/home/xai/Programacion/Shell/build/CMakeFiles/rebuild_cache.dir
