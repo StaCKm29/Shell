@@ -1,29 +1,15 @@
-# Nombre del ejecutable
-EXEC = shell
-
-# Archivos fuente
-SRC = main.c tokenPipes.c ejecutarComandos.c tokenEspacios.c alarma.c favs.c
-
-# Compilador y banderas
+# Variables
 CC = gcc
-CFLAGS = -Wall -Wextra -g
+CFLAGS = -Wall -Wextra
 
-# Archivos objeto
-OBJ = $(SRC:.c=.o)
+# Reglas
 
-# Regla por defecto
-all: $(EXEC)
+shell: main.o
+    $(CC) $(CFLAGS) -o shell main.o
 
-# Regla para generar el ejecutable
-$(EXEC): $(OBJ)
-	$(CC) $(OBJ) -o $(EXEC)
+main.o: main.c tokenPipes.c ejecutarComandos.c tokenEspacios.c alarma.c favs.c 
+    $(CC) $(CFLAGS) -c main.c
 
-# Regla para generar los archivos objeto
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-# Regla para limpiar los archivos generados
-clean:
-	rm -f $(OBJ) $(EXEC)
-
-.PHONY: all clean
+.PHONY: clean
+clean: 
+    rm -f *.o shell
