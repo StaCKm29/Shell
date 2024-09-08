@@ -120,6 +120,7 @@ void guardarComandos(favs *favs);
  */
 void elegirFavs(favs *favs, char **comando);
 
+
 void iniciarFavs(favs *favs)
 {
     favs->comandos = malloc(10 * sizeof(char **));
@@ -511,6 +512,7 @@ void cargarComando(favs *favs)
     printf("Comandos cargados correctamente desde %s\n", ruta);
 }
 
+// Verifica que un comando sea ejecutable
 int verificarComandoEjecutable(char **comando)
 {
     if (comando[0] == NULL)

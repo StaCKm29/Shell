@@ -70,36 +70,28 @@ void ejecutarComandos(char **comandos, int num_comandos, favs *favoritos)
             }
         } else if (strcmp(args[0], "favs") == 0) {
             elegirFavs(favoritos, args);
-        }
-        else
-        {
+        } else {
             pid = fork();
-            if (pid == 0)
-            {
+            if (pid == 0) {
                 // Redireccionar la entrada del proceso.
-                if (i > 0)
-                { // Solo si no es el primer comando
-                    if (dup2(mispipes[(i - 1) * 2], READ) < 0)
-                    { // dup2 retorna -1 si hay error
+                if (i > 0) { //Solo si no es el primer comando
+                    if (dup2(mispipes[(i - 1) * 2], READ) < 0) { //dup2 retorna -1 si hay error
                         perror("Error duplicando descriptor de archivo (fd) para entrada.\n");
                         exit(1);
                     }
-                    // Se duplica el descriptor de archivo para la entrada.
+                    //Se duplica el descriptor de archivo para la entrada.
                 }
                 // Redireccionar la salida del proceso.
-                if (i < num_comandos - 1)
-                {
-                    if (dup2(mispipes[i * 2 + 1], WRITE) < 0)
-                    {
+                if (i < num_comandos - 1) {
+                    if (dup2(mispipes[i * 2 + 1], WRITE) < 0) {
                         perror("Error duplicando descriptor de archivo (fd) para salida.\n");
                         exit(1);
                     }
-                    // Se duplica el descriptor de archivo para la salida.
+                    //Se duplica el descriptor de archivo para la salida.
                 }
 
                 // Cerrar todos los pipes en el proceso hijo
-                for (int j = 0; j < 2 * (num_comandos - 1); j++)
-                {
+                for (int j = 0; j < 2 * (num_comandos - 1); j++) {
                     close(mispipes[j]);
                 }
 
@@ -108,9 +100,7 @@ void ejecutarComandos(char **comandos, int num_comandos, favs *favoritos)
                 // Si execvp falla
                 perror("execvp failed");
                 exit(EXIT_FAILURE);
-            }
-            else if (pid < 0)
-            {
+            } else if (pid < 0) {
                 perror("Error en fork()");
                 exit(1);
             }
@@ -118,17 +108,15 @@ void ejecutarComandos(char **comandos, int num_comandos, favs *favoritos)
     }
 
     // Cerrar todos los pipes en el proceso padre
-    for (i = 0; i < 2 * (num_comandos - 1); i++)
-    {
+    for (i = 0; i < 2 * (num_comandos - 1); i++) {
         close(mispipes[i]);
     }
 
     // Esperar a que todos los hijos terminen
-    for (i = 0; i < num_comandos; i++)
-    {
+    for (i = 0; i < num_comandos; i++) {
         wait(NULL);
         agregarComando(favoritos, args_array[i]); // Llamar agregarComando en el padre
-        free(args_array[i]);                      // Liberar args después de que se use en el padre
+        free(args_array[i]); // Liberar args después de que se use en el padre
     }
 
     // Liberar el arreglo de punteros a args
