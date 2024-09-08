@@ -49,4 +49,4 @@ CMakeFiles/shell.dir/src/favs.c.o: \
  /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
  /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
  /usr/include/sys/wait.h /usr/include/bits/types/idtype_t.h \
- /home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenEspacios.h
+ /usr/include/ctype.h
