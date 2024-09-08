@@ -37,7 +37,7 @@ También se pueden ejecutar comandos con argumentos adicionales y combinar la sa
 ```sh
 ls | wc -l
 ```
-
+que cuenta cuántos archivos y directorios hay en el directorio actual
 
 ### Recordatorio 
 - `set alarma [segundos] [mensaje]:` Configura una alarma que desplegará un mensaje luego de los segundos especificados. Todo lo que venga después del 
@@ -51,9 +51,7 @@ favs crear /ruta/hacia/archivo_favoritos.txt
 ```
 
 `favs mostrar` : Muestra todos los comandos favoritos guardados de forma enumerada. 
-```sh
-favs crear /ruta/hacia/archivo_favoritos.txt
-```
+
 `favs eliminar [num1,num2]` : Elimina el o los comandos favoritos guardados proporcionando el número
 mostrado en favs mostrar
 ```sh
