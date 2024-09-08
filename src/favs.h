@@ -20,6 +20,7 @@ void eliminarComando(favs *favs, int num1, int num2);
 void borrarComandos(char *ruta);
 void buscarComandos(favs *favs, const char *sstring);
 void ejecutarComando(favs *favs, int num);
+char *leerRutaDeArchivo(char *ruta);
 void cargarComando(favs *favs);
 int verificarComandoEjecutable(char **comando);
 void freeFavs(favs *favs);

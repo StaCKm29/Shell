@@ -6,8 +6,12 @@
 #include "tokenPipes.h"
 #include "ejecutarComandos.h"
 
-// Compilar con gcc main.c tokenPipes.c ejecutarComandos.c tokenEspacios.c alarma.c favs.c -o shell
-//  ./shell
+/**
+ * Función principal del shell.
+ * Lee la entrada del usuario, divide los comandos por pipes y los ejecuta.
+ *
+ * @authors : Jesús Guevara, Gabriel Castillo, Rodrigo Bascuñan, Marcos Martínez Rojas
+ */
 
 int main()
 {
@@ -27,7 +31,7 @@ int main()
             break;
         }
 
-        printf("\033[1;37mOhMyShell:~%s 👾 \033[0m", ruta); // Imprimir un prompt
+        printf("\033[1;34mOhMyShell:\033[0m \033[1;37m~%s\033[0m 👾 ", ruta); // Imprimir un prompt
         fgets(input, sizeof(input), stdin);                 // Leer la entrada del usuario
         input[strcspn(input, "\n")] = 0;                    // Eliminar el salto de línea final que fgets incluye
 

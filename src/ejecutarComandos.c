@@ -10,6 +10,15 @@
 const int READ = 0;  // Variable de lectura para pipe
 const int WRITE = 1; // Variable de escritura para pipe
 
+/**
+ * Ejecuta una serie de comandos, posiblemente encadenados mediante pipes.
+ * Para cada comando, se crea un proceso hijo que ejecuta el comando,
+ * redirigiendo la entrada y salida según sea necesario.
+ *
+ * @param comandos Array de cadenas que contiene los comandos a ejecutar. Cada comando se encuentra en una posición del array.
+ * @param num_comandos Número total de comandos en el array `comandos`.
+ * @param favoritos Estructura que gestiona los comandos favoritos. Se usa para registrar ciertos comandos.
+ */
 void ejecutarComandos(char **comandos, int num_comandos, favs *favoritos) {
     //si fueran tres comandos separados por dos pipes, entonces el arreglo seria [4], es decir,
     //num_comandos - 1 = 2 y eso multiplicado por 2 es 4.

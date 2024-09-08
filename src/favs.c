@@ -14,23 +14,113 @@ typedef struct
     char ruta_archivo[1024];
 } favs;
 
+/**
+ * Inicializa la estructura de datos favs.
+ * @param: favs - Puntero a la estructura de datos favs a inicializar.
+ */
 void iniciarFavs(favs *favs);
+
+/**
+ * Crea un archivo con la ruta especificada para guardar la ruta del archivo.
+ * @param: ruta - Ruta del archivo a crear.
+ * @param: ruta_a_guardar - Ruta a guardar en el archivo.
+ */
 void crearRutaDeArchivoAlSalir(char *ruta, char *ruta_a_guardar);
+
+/**
+ * Crea un archivo con la lista de comandos almacenados en favs.
+ * @param: favs - Puntero a la estructura de datos favs que contiene los comandos.
+ * @param: ruta - Ruta del archivo donde se guardarán los comandos.
+ */
 void crearArchivo(favs *favs, char *ruta);
+
+/**
+ * Agrega un comando a la lista de favoritos, evitando duplicados.
+ * @param: favs - Puntero a la estructura de datos favs donde se agregará el comando.
+ * @param: comando - Comando a agregar a la lista de favoritos.
+ */
 void agregarComando(favs *favs, char **comando);
+
+/**
+ * Muestra los comandos almacenados en un archivo especificado.
+ * @param ruta - Ruta del archivo que contiene los comandos.
+ */
 void mostrarComandos(char *ruta);
+
+/**
+ * Muestra los comandos almacenados en la estructura favs en la consola.
+ * @param favs - Puntero a la estructura de datos favs que contiene los comandos.
+ */
 void mostrarComandosPrintf(favs *favs);
+
+/**
+ * Elimina comandos de la lista de favoritos en el rango especificado.
+ * @param favs - Puntero a la estructura de datos favs que contiene los comandos.
+ * @param num1 - Número de inicio del rango (1 basado).
+ * @param num2 - Número de fin del rango (1 basado).
+ */
 void eliminarComando(favs *favs, int num1, int num2);
+
+/**
+ * Borra todo el contenido del archivo de comandos especificado.
+ * @param ruta - Ruta del archivo a borrar.
+ */
 void borrarComandos(char *ruta);
+
+/**
+ * Busca comandos que contengan un substring especificado y los muestra.
+ * @param favs - Puntero a la estructura de datos favs que contiene los comandos.
+ * @param sstring - Substring a buscar en los comandos.
+ */
 void buscarComandos(favs *favs, const char *sstring);
+
+/**
+ * Ejecuta el comando especificado por su número en la lista de favoritos.
+ * @param favs - Puntero a la estructura de datos favs que contiene los comandos.
+ * @param num - Número del comando a ejecutar (1 basado).
+ */
 void ejecutarComando(favs *favs, int num);
+
+/**
+ * Lee la ruta del archivo de comandos desde un archivo de configuración.
+ * @param ruta - Ruta del archivo de configuración.
+ * @return - Ruta del archivo de comandos leída.
+ */
+char *leerRutaDeArchivo(char *ruta);
+
+/**
+ * Carga los comandos desde el archivo de comandos especificado en la estructura favs.
+ * @param favs - Puntero a la estructura de datos favs que se cargará con los comandos.
+ */
 void cargarComando(favs *favs);
+
+/**
+ * Verifica si un comando es ejecutable en el sistema.
+ * @param comando - Comando a verificar.
+ * @return: 1 si el comando es ejecutable, 0 en caso contrario.
+ */
 int verificarComandoEjecutable(char **comando);
+
+/**
+ * Libera la memoria utilizada por la estructura de datos favs.
+ * @param favs - Puntero a la estructura de datos favs a liberar.
+ */
 void freeFavs(favs *favs);
+
+/**
+ * Guarda los comandos almacenados en la estructura favs en el archivo especificado.
+ * @param favs - Puntero a la estructura de datos favs que contiene los comandos.
+ */
 void guardarComandos(favs *favs);
+
+/**
+ * Ejecuta una función basada en el comando dado.
+ * @param favs - Puntero a la estructura de datos favs para manejar los comandos.
+ * @param comando - Comando que especifica la acción a realizar.
+ */
 void elegirFavs(favs *favs, char **comando);
 
-// Inicializo la estructura de datos
+
 void iniciarFavs(favs *favs)
 {
     favs->comandos = malloc(10 * sizeof(char **));
@@ -567,120 +657,3 @@ void elegirFavs(favs *favs, char **comando)
         printf("Error: Comando de favs no reconocido.\n");
     }
 }
-
-// int main()
-// {
-//     favs misFavoritos;
-//     iniciarFavs(&misFavoritos);
-
-//     int tamaño_buf = 1024;
-//     int tamaño_actual = tamaño_buf;
-
-//     char *input = malloc(tamaño_buf * sizeof(char));
-//     if (!input)
-//     {
-//         printf("Error en memoria");
-//         exit(1);
-//     }
-
-//     int l = 0, c;
-//     char ruta[1024];
-
-//     while (1)
-//     {
-//         if (getcwd(ruta, sizeof(ruta)) == NULL)
-//         {
-//             printf("Error en cwd");
-//             free(input);
-//             exit(1);
-//         }
-
-//         printf("\033[1;37mOhMyShell 👾 %s \033[0m", ruta); // Imprimir un prompt
-
-//         l = 0;
-//         while ((c = fgetc(stdin)) != '\n' && c != EOF)
-//         {
-//             input[l++] = (char)c;
-//             if (l == tamaño_actual)
-//             {
-//                 tamaño_actual += tamaño_buf;
-//                 char *temp = realloc(input, tamaño_actual * sizeof(char));
-//                 if (!temp)
-//                 {
-//                     printf("Error en memoria");
-//                     free(input);
-//                     exit(1);
-//                 }
-//                 input = temp;
-//             }
-//         }
-//         input[l] = '\0';
-
-//         // Si el usuario ingresa "exit", salir del programa
-//         if (strcmp(input, "exit") == 0)
-//         {
-//             if (strcmp(misFavoritos.ruta_archivo, "") != 0)
-//             {
-//                 char ruta_estandar[1024];
-//                 char *nombreArchivo = "/ruta.txt";
-//                 char *rutaHome = getenv("HOME");
-//                 snprintf(ruta_estandar, sizeof(ruta_estandar), "%s%s", rutaHome, nombreArchivo);
-//                 crearRutaDeArchivoAlSalir(ruta_estandar, misFavoritos.ruta_archivo);
-//             }
-//             break;
-//         }
-
-//         // Si el usuario presiona enter sin ingresar nada, continuar
-//         if (strlen(input) == 0)
-//         {
-//             continue;
-//         }
-
-//         char **comandos = extraerComandos(input, 0);
-
-//         // El padre debe ejecutar el comando cd.
-//         if (strcmp(comandos[0], "cd") == 0)
-//         {
-//             if (comandos[1] == NULL || strcmp(comandos[1], "~") == 0)
-//             {
-//                 char *args[] = {"cd", NULL};
-//                 agregarComando(&misFavoritos, args);
-//                 chdir(getenv("HOME"));
-//             }
-//             else
-//             {
-//                 if (chdir(comandos[1]) != 0)
-//                 {
-//                     perror("Error cambiando el directorio");
-//                 }
-//             }
-//             char *args[] = {"cd", NULL};
-//             agregarComando(&misFavoritos, args);
-//         }
-//         else if (strcmp(comandos[0], "favs") == 0)
-//         {
-//             elegirFavs(&misFavoritos, comandos);
-//         }
-//         else
-//         {
-//             if (fork() == 0)
-//             { // Proceso hijo
-//                 execvp(comandos[0], comandos);
-//                 perror("Error ejecutando el comando");
-//                 exit(1);
-//             }
-//             else
-//             {
-//                 wait(NULL);
-//                 agregarComando(&misFavoritos, comandos);
-//             }
-//         }
-
-//         free(comandos);
-//     }
-
-//     // Liberar memoria y salir
-//     freeFavs(&misFavoritos);
-//     free(input);
-//     return 0;
-// }
