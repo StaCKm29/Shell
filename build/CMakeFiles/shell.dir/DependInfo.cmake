@@ -8,20 +8,16 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/alarma.c" "CMakeFiles/shell.dir/src/alarma.c.o" "gcc" "CMakeFiles/shell.dir/src/alarma.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/ejecutarComandos.c" "CMakeFiles/shell.dir/src/ejecutarComandos.c.o" "gcc" "CMakeFiles/shell.dir/src/ejecutarComandos.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/favs.c" "CMakeFiles/shell.dir/src/favs.c.o" "gcc" "CMakeFiles/shell.dir/src/favs.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/main.c" "CMakeFiles/shell.dir/src/main.c.o" "gcc" "CMakeFiles/shell.dir/src/main.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenEspacios.c" "CMakeFiles/shell.dir/src/tokenEspacios.c.o" "gcc" "CMakeFiles/shell.dir/src/tokenEspacios.c.o.d"
-  "/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/src/tokenPipes.c" "CMakeFiles/shell.dir/src/tokenPipes.c.o" "gcc" "CMakeFiles/shell.dir/src/tokenPipes.c.o.d"
+  "/home/xai/Programacion/Shell/src/alarma.c" "CMakeFiles/shell.dir/src/alarma.c.o" "gcc" "CMakeFiles/shell.dir/src/alarma.c.o.d"
+  "/home/xai/Programacion/Shell/src/ejecutarComandos.c" "CMakeFiles/shell.dir/src/ejecutarComandos.c.o" "gcc" "CMakeFiles/shell.dir/src/ejecutarComandos.c.o.d"
+  "/home/xai/Programacion/Shell/src/favs.c" "CMakeFiles/shell.dir/src/favs.c.o" "gcc" "CMakeFiles/shell.dir/src/favs.c.o.d"
+  "/home/xai/Programacion/Shell/src/main.c" "CMakeFiles/shell.dir/src/main.c.o" "gcc" "CMakeFiles/shell.dir/src/main.c.o.d"
+  "/home/xai/Programacion/Shell/src/tokenEspacios.c" "CMakeFiles/shell.dir/src/tokenEspacios.c.o" "gcc" "CMakeFiles/shell.dir/src/tokenEspacios.c.o.d"
+  "/home/xai/Programacion/Shell/src/tokenPipes.c" "CMakeFiles/shell.dir/src/tokenPipes.c.o" "gcc" "CMakeFiles/shell.dir/src/tokenPipes.c.o.d"
   )
 
-# Targets to which this target links which contain Fortran sources.
-set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
-  )
-
-# Targets to which this target links which contain Fortran sources.
-set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.
