@@ -7,6 +7,7 @@
 char *mensajeRecibido;
 
 void sig_Alarma_Handler(int p){
+	(void)p;  // Para evitar warnings por no uso de la variable p
 	printf("%s \n", mensajeRecibido);
 }
 
