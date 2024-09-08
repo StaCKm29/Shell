@@ -1,3 +1,0 @@
-/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/build/CMakeFiles/shell.dir
-/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/build/CMakeFiles/edit_cache.dir
-/home/marcosmartinez/Semestre_IV/sistemasOperativos/shell/build/CMakeFiles/rebuild_cache.dir

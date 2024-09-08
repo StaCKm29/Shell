@@ -542,8 +542,7 @@ void elegirFavs(favs *favs, char **comando)
         cargarComando(favs);
         mostrarComandosPrintf(favs); // Mostrar los comandos cargados en la memoria
     }
-    else if (strcmp(comando[1], "guardar") == 0)
-    {
+    else if (strcmp(comando[1], "guardar") == 0) {
         guardarComandos(favs);
     }
     else if (strcmp(comando[1], "terminal") == 0)
