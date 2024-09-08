@@ -49,7 +49,6 @@ tiempo en segundos será considerado como mensaje.
 ```sh
 favs crear /ruta/hacia/archivo_favoritos.txt
 ```
-`favs guardar` : Guarda una lista de comandos favoritos al directorio especificado
 
 `favs mostrar` : Muestra todos los comandos favoritos guardados de forma enumerada. 
 ```sh
@@ -68,10 +67,10 @@ favs buscar ls
 ```
 esto buscará y mostrará los comandos favortios que contengan ls
 
-`favs cargar` : Carga la lista de comandos favoritos desde el archivo especificado en la ruta dada. Los comandos cargados estarán disponibles para ser utilizados en la sesión actual del shell.
-```sh
-favs cargar /ruta/hacia/archivo_favoritos.txt
-```
+`favs guardar` : Guarda los comandos favoritos actuales en el archivo de texto, para que no se pierdan al cerrar la shell.
+
+`favs cargar` : Lee ese archivo guardado y vuelve a cargar los comandos favoritos en la memoria, para que puedan ser utilizados en la sesión actual del shell.
+
 `favs borrar` :  Borra todos los comandos favoritos almacenados en el archivo de comandos y vacía la lista de comandos en memoria.
 
 <h3 align="left">Herramientas utilizadas: </h3>
