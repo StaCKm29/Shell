@@ -32,8 +32,8 @@ int main()
         }
 
         printf("\033[1;34mOhMyShell:\033[0m \033[1;37m~%s\033[0m 👾 ", ruta); // Imprimir un prompt
-        fgets(input, sizeof(input), stdin);                 // Leer la entrada del usuario
-        input[strcspn(input, "\n")] = 0;                    // Eliminar el salto de línea final que fgets incluye
+        fgets(input, sizeof(input), stdin);                                   // Leer la entrada del usuario
+        input[strcspn(input, "\n")] = 0;                                      // Eliminar el salto de línea final que fgets incluye
 
         // Asignar memoria para los comandos en cada iteración
         comandos = malloc(1024 * sizeof(char *));
@@ -54,10 +54,13 @@ int main()
                 crearRutaDeArchivoAlSalir(ruta_estandar, favoritos.ruta_archivo);
             }
             free(comandos); // Liberar memoria antes de salir
-            exit(0);        // Asegurar que el programa completo termine
+            freeFavs(&favoritos);
+            exit(0); // Asegurar que el programa completo termine
         }
 
         // Ejecutar los otros comandos divididos por pipes
         ejecutarComandos(comandos, num_comandos, &favoritos);
+        free(comandos);
     }
+    freeFavs(&favoritos);
 }

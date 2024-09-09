@@ -120,7 +120,6 @@ void guardarComandos(favs *favs);
  */
 void elegirFavs(favs *favs, char **comando);
 
-
 void iniciarFavs(favs *favs)
 {
     favs->comandos = malloc(10 * sizeof(char **));
@@ -169,7 +168,7 @@ void crearRutaDeArchivoAlSalir(char *ruta, char *ruta_a_guardar)
 void agregarComando(favs *favs, char **comando)
 {
 
-    if (verificarComandoEjecutable(comando))
+    if (!verificarComandoEjecutable(comando))
     {
         return;
     }
@@ -499,6 +498,8 @@ void cargarComando(favs *favs)
             {
                 // Agregar el comando a la estructura favs
                 agregarComando(favs, comando);
+                // Liberar el arreglo de punteros
+                free(comando);
             }
         }
     }
@@ -510,17 +511,44 @@ void cargarComando(favs *favs)
     printf("Comandos cargados correctamente desde %s\n", ruta);
 }
 
-// Verifica que un comando sea ejecutable
 int verificarComandoEjecutable(char **comando)
 {
-    // Busca en el PATH si el comando es accesible
+    if (comando[0] == NULL)
+    {
+        return 0; // No hay comando a verificar
+    }
+
+    // Verifica si el comando es una ruta absoluta o relativa
     if (access(comando[0], X_OK) == 0)
     {
         return 1; // El comando es accesible y ejecutable
     }
     else
     {
-        return 0; // No es accesible o no es ejecutable
+        // Si el comando no es una ruta absoluta, busca en el PATH
+        char *path = getenv("PATH");
+        if (path != NULL)
+        {
+            char *dir;
+            char ruta[1024];
+
+            // Copia de path para evitar modificar el original
+            char *path_copy = strdup(path);
+
+            dir = strtok(path_copy, ":");
+            while (dir != NULL)
+            {
+                snprintf(ruta, sizeof(ruta), "%s/%s", dir, comando[0]);
+                if (access(ruta, X_OK) == 0)
+                {
+                    free(path_copy); // Libera memoria duplicada
+                    return 1;        // Encontrado y ejecutable en el PATH
+                }
+                dir = strtok(NULL, ":");
+            }
+            free(path_copy); // Libera memoria duplicada
+        }
+        return 0; // No encontrado o no ejecutable
     }
 }
 // Libera la memoria
@@ -632,7 +660,8 @@ void elegirFavs(favs *favs, char **comando)
         cargarComando(favs);
         mostrarComandosPrintf(favs); // Mostrar los comandos cargados en la memoria
     }
-    else if (strcmp(comando[1], "guardar") == 0) {
+    else if (strcmp(comando[1], "guardar") == 0)
+    {
         guardarComandos(favs);
     }
     else if (strcmp(comando[2], "ejecutar") == 0)
