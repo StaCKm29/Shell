@@ -10,7 +10,7 @@
  * Función principal del shell.
  * Lee la entrada del usuario, divide los comandos por pipes y los ejecuta.
  *
- * @authors : Jesús Guevara, Gabriel Castillo, Rodrigo Bascuñan, Marcos Martínez Rojas
+ * @authors : Jesús Guevara, Gabriel Castillo, Rodrigo Bascuñán, Marcos Martínez Rojas
  */
 
 int main()
