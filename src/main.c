@@ -23,8 +23,10 @@ int main()
     int num_comandos; // Número de comandos separados por pipes
     char ruta[256];
 
-    while (1){
-        if (getcwd(ruta, sizeof(ruta)) == NULL){
+    while (1)
+    {
+        if (getcwd(ruta, sizeof(ruta)) == NULL)
+        {
             printf("Error en obtener la ruta\n");
             break;
         }
@@ -52,8 +54,7 @@ int main()
             }
             guardarComandos(&favoritos);
             free(comandos); // Liberar memoria antes de salir
-            freeFavs(&favoritos);
-            exit(0); // Asegurar que el programa completo termine
+            exit(0);        // Asegurar que el programa completo termine
         }
 
         // Ejecutar los otros comandos divididos por pipes

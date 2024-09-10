@@ -3,6 +3,7 @@
 #include <signal.h>
 #include <string.h>
 #include <unistd.h>
+#include <ctype.h>
 #include <sys/wait.h>
 #include "tokenEspacios.h"
 
@@ -521,6 +522,10 @@ int verificarComandoEjecutable(char **comando)
     {
         return 0; // No hay comando a verificar
     }
+    if (strcmp(comando[0], "set") == 0 && strcmp(comando[1], "alarma") == 0)
+    {
+        return 1;
+    }
 
     // Verifica si el comando es una ruta absoluta o relativa
     if (access(comando[0], X_OK) == 0)
@@ -601,6 +606,7 @@ void guardarComandos(favs *favs)
 // funcion switch para elegir que funcion usar mediante el cmd
 void elegirFavs(favs *favs, char **comando)
 {
+
     if (comando[1] == NULL)
     {
         printf("No se reconoce el comando favs\n");
@@ -668,7 +674,7 @@ void elegirFavs(favs *favs, char **comando)
     {
         guardarComandos(favs);
     }
-    else if (strcmp(comando[2], "ejecutar") == 0)
+    else if (comando[2] != NULL && strcmp(comando[2], "ejecutar") == 0)
     {
         if (comando[2] != NULL)
         {
