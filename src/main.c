@@ -50,9 +50,9 @@ int main()
                 char *nombreArchivo = "/ruta.txt";
                 char *rutaHome = getenv("HOME");
                 snprintf(ruta_estandar, sizeof(ruta_estandar), "%s%s", rutaHome, nombreArchivo);
-                guardarComandos(&favoritos);
                 crearRutaDeArchivoAlSalir(ruta_estandar, favoritos.ruta_archivo);
             }
+            guardarComandos(&favoritos);
             free(comandos); // Liberar memoria antes de salir
             freeFavs(&favoritos);
             exit(0); // Asegurar que el programa completo termine
