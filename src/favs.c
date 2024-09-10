@@ -130,13 +130,16 @@ void iniciarFavs(favs *favs)
 // Creacion del archivo txt
 void crearArchivo(favs *favs, char *ruta)
 {
-    FILE *archivo = fopen(ruta, "w");
+    char ruta_absoluta[1024];
+    ruta = realpath(ruta, ruta_absoluta);
+
+    FILE *archivo = fopen(ruta_absoluta, "w");
     if (archivo == NULL)
     {
         printf("Error al abrir el archivo\n");
         return;
     }
-    strcpy(favs->ruta_archivo, ruta);
+    strcpy(favs->ruta_archivo, ruta_absoluta);
 
     // Recorrer los comandos y guardarlos en el archivo
     for (int i = 0; i < favs->tamaño; i++)
