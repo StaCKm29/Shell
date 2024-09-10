@@ -5,7 +5,6 @@
 #include <unistd.h>
 
 char *mensajeRecibido;
-
 /**
  * Manejador de la señal SIGALRM que imprime el mensaje almacenado.
  *
@@ -14,6 +13,7 @@ char *mensajeRecibido;
 void sig_Alarma_Handler(int p){
     (void)p;
     printf("%s \n", mensajeRecibido);
+    printf("\033[1;34mOhMyShell:\033[0m 👾 "); // Imprimir un prompt
 }
 
 /**
@@ -24,10 +24,14 @@ void sig_Alarma_Handler(int p){
  * @param mensaje Mensaje que será impreso cuando la alarma se dispare.
  */
 void setAlarma(int segundos, char *mensaje) {
-    mensajeRecibido = mensaje;
-    signal(SIGALRM, sig_Alarma_Handler);  // Configura el manejador para SIGALRM
-    alarm(segundos);  // Programa la alarma para que se dispare después de "segundos"
-    pause();  // Pausa la ejecución del programa hasta que la señal sea recibida
+    if (fork() == 0) {  // Proceso hijo
+        setsid();  // Crear nueva sesión para el proceso hijo
+        mensajeRecibido = mensaje;
+        signal(SIGALRM, sig_Alarma_Handler);  // Configura el manejador para SIGALRM
+        alarm(segundos);  // Programa la alarma para que se dispare después de "segundos"
+        pause();  // Pausa la ejecución del programa hasta que la señal sea recibida
+        exit(0);  // El proceso hijo finaliza
+    }
 }
 
 /**
@@ -41,11 +45,9 @@ void setAlarma(int segundos, char *mensaje) {
 void manejoAlarma(char **args){
     if (args[2] == NULL || args[3] == NULL) {
         printf("Error: Alguno de los argumentos es nulo.\n");
-    }
-    else {
+    } else {
         char *finalCadena;
-        char *mensaje;
-        mensaje = malloc(1024 * sizeof(char));  // Reserva memoria para el mensaje
+        char *mensaje = malloc(1024 * sizeof(char));  // Reserva memoria para el mensaje
         strcpy(mensaje, args[3]);  // Copia el primer segmento del mensaje
 
         int indice = 4;
@@ -56,12 +58,12 @@ void manejoAlarma(char **args){
         }
 
         int segundos = strtol(args[2], &finalCadena, 10);  // Convierte args[2] a entero
-        if (*finalCadena != '\0' || segundos <= 0) {
+
+        if (*finalCadena != '\0' || segundos <= 0)
             printf("Error: El argumento no es un número válido.\n");
-            free(mensaje);  // Libera la memoria asignada si hay un error
-        } else {
+        else
             setAlarma(segundos, mensaje);  // Configura la alarma si los argumentos son válidos
-            free(mensaje);  // Libera la memoria después de usar el mensaje
-        }
+
+        free(mensaje);
     }
 }
