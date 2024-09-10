@@ -54,8 +54,11 @@ void ejecutarComandos(char **comandos, int num_comandos, favs *favoritos) {
                 }
             }
         } else if (strcmp(args[0], "set") == 0 && strcmp(args[1], "alarma") == 0) {
-            manejoAlarma(args);
-            agregarComando(favoritos, args); // Registrar el comando en favoritos
+            if(fork() == 0) {
+                manejoAlarma(args);
+                agregarComando(favoritos, args); // Registrar el comando en favoritos
+                exit(0);
+            }
         } else if (strcmp(args[0], "favs") == 0) {
             elegirFavs(favoritos, args);
         } else {
